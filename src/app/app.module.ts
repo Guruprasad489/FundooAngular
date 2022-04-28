@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -35,7 +37,9 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     MatInputModule,
     MatCheckboxModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

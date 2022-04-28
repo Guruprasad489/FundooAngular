@@ -1,60 +1,74 @@
 <div class="reg-layout">
 <div class="container">
     <div class="reg-container">
+
         <div class="form-head">
             <!-- <img src="assets/Fundoo-logo.png" width="150px" height="55px"> -->
-            <img src="/assets/Fundoo-logo2.png"  width="120px" height="30px">
-            <h1> </h1>
-            <h1>Create Your Fundoo Account</h1>            
+            <!-- <img src="/assets/Fundoo-logo2.png"  width="120px" height="30px"> -->
+            <div fxLayout="row" style="font-weight:500">
+            <p style="font-size: 30px ; color: #4285F4">F</p>
+            <p style="font-size: 30px ; color: #EA4335">u</p>
+            <p style="font-size: 30px ; color: #FBBC05">n</p>
+            <p style="font-size: 30px ; color: #4285F4">d</p>
+            <p style="font-size: 30px ; color: #34A853">o</p>
+            <p style="font-size: 30px ; color: #EA4335">o</p>
+            </div>
+            <h2>Create Your Fundoo Account</h2>            
         </div>
-        <form class="form-container" >
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="form-field">
+        
+        <form class="form-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group" fxLayout="row" fxLayout.lt-lg="column" fxLayout.lt-lg="column" >
+                <mat-form-field appearance="outline" class="form-field" >
                     <mat-label>First Name</mat-label>
-                    <input matInput placeholder="First Name" required>
+                    <input matInput type="text" placeholder="First Name" formControlName="firstName" >
+                    <mat-error>First name is required</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name" required>
+                    <input matInput placeholder="Last Name" formControlName="lastName">
+                    <mat-error>Last name is required</mat-error>
                 </mat-form-field>
             </div>
             <div class="form-group">
                 <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>Username</mat-label>
-                    <input matInput placeholder="Username" required>
-                    <span matSuffix>@gmail.com</span>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="Ex: example@gmail.com" formControlName="email">
+                    <!-- <span matSuffix>@gmail.com</span> -->
                     <mat-hint>You can use letters, numbers & periods</mat-hint>
+                    <mat-error>Username is reqiured</mat-error>
                 </mat-form-field>
             </div>
             <div class="form-group form-field">
                 <button mat-button class="btn-basic">Use my current email instesd</button>
             </div>
-            <div class="form-group">
+            <div class="form-group" fxLayout="row" fxLayout.lt-lg="column" fxLayout.lt-lg="column">
                 <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" placeholder="Password" required>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
                     <mat-hint>Use 8 or more characters <!--with a mix of letters, numbers & symbols--></mat-hint>
+                    <mat-error>Password is required</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Confirm</mat-label>
-                    <input matInput type="password" placeholder="Confirm" required>
+                    <input matInput type="password" placeholder="Confirm" formControlName="confirmPassword">
+                    <mat-error>Confirm Password is required</mat-error>
                     <!-- <mat-hint>Hint</mat-hint> -->
                 </mat-form-field>
             </div>
             <div class="form-group form-field">
                 <section class="example-section">
-                    <mat-checkbox class="example-margin">Show Password</mat-checkbox>
+                    <mat-checkbox class="example-margin" >Show Password</mat-checkbox>
                 </section>
             </div>
             <br>
             <br>
             <div class="form-group buttons">
                 <button mat-button class="btn-basic" routerLink="/login">Sign in instesd</button>
-                <button mat-raised-button class="btn-primary" color="primary">Next</button>
+                <button mat-raised-button type="submit" class="btn-primary" color="primary" >Next</button>
             </div>
         </form>
     </div>
-    <div class="reg-img">
+    <div class="reg-img" fxLayout="column" fxLayoutAlign="center center" fxHide fxShow.gt-sm>
         <img src="/assets/account.svg" alt="" width="244" height="244" class="">
         <p>One account. All of Fundoo working for you.</p>
     </div>

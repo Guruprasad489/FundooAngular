@@ -25,7 +25,6 @@
 
 
 .form-head {
-    text-transform: capitalize;
     padding: 10px;
     text-align: center;
 }
@@ -38,9 +37,9 @@
     justify-content:flex-start; 
     margin-bottom: 10px;
 }
-.form-group ::ng-deep .mat-form-field-wrapper{
-    padding-bottom: 0px;
-}
+// .form-group ::ng-deep .mat-form-field-wrapper{
+//     padding-bottom: 0px;
+// }
 
 .mat-form-filed{
     width: max-content;
@@ -59,6 +58,7 @@
     font-size: 16px;
     color: #1a73e8;
     text-decoration: none;
+    background-color: #e8f0fb;
 }
 .btn-primary{
     min-width: 80px;
@@ -83,5 +83,18 @@
 .buttons{
     display: flex;
     justify-content: space-between;
-    margin-left: -5px;
+}
+
+@media (max-width: 550px) {
+    .container{
+        max-width: 80%;
+        min-width: 250px;
+        font-size: 14px;
+    }
+    .btn-basic, .btn-primary{
+        font-size: 14px;
+    }
+    .form-head{
+        font-size: 0.8em !important;
+    }
 }
