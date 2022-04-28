@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/userServices/user.service';
 
-// import custom validator to validate that password and confirm password fields match
-// import { MustMatch } from './_helpers/must-match.validator';
+// import { ConfirmedValidator } from './confirmed.validator';
 
 @Component({
   selector: 'app-registration',
@@ -11,10 +10,6 @@ import { UserService } from 'src/app/Services/userServices/user.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
-
-  // ngOnInit(): void {
-  // }
 
   registerForm!: FormGroup;
     submitted = false;
@@ -26,12 +21,12 @@ export class RegistrationComponent implements OnInit {
             firstName: ['', [Validators.required, Validators.pattern("^[A-Z]{1}[a-z]{2,}$")]],
             lastName: ['', [Validators.required, Validators.pattern("^[A-Z]{1}[a-z]{2,}$")]],
             // userName: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
+            email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-zA-Z0-9]{3,}([._+-][a-zA-Z0-9]{1,})?@[a-zA-Z0-9]{1,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$")]],
             password: ['', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[&%$#@?^*!~]).{8,}$")]],
-            confirmPassword: ['', Validators.required],
+            confirmPassword: ['', Validators.required]
         }
         // , {
-        //     validator: MustMatch('password', 'confirmPassword')
+        //     validator: ConfirmedValidator('password', 'confirmPassword')
         // }
         );
     }
@@ -54,7 +49,6 @@ export class RegistrationComponent implements OnInit {
                   });
             }
             
-                
             // display form values on success
             // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
         }
@@ -63,6 +57,19 @@ export class RegistrationComponent implements OnInit {
             this.submitted = false;
             this.registerForm.reset();
         }
-
-        
 }
+
+// export function ConfirmedValidator(controlName: string, matchingControlName: string){
+//     return (formGroup: FormGroup) => {
+//         const control = formGroup.controls[controlName];
+//         const matchingControl = formGroup.controls[matchingControlName];
+//         if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+//             return;
+//         }
+//         if (control.value !== matchingControl.value) {
+//             matchingControl.setErrors({ confirmedValidator: true });
+//         } else {
+//             matchingControl.setErrors(null);
+//         }
+//     }
+// }

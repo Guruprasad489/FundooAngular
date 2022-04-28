@@ -16,7 +16,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     ngOnInit() {
         this.forgotPasswordForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
+            email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-zA-Z0-9]{3,}([._+-][a-zA-Z0-9]{1,})?@[a-zA-Z0-9]{1,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$")]],
         });
     }
         // convenience getter for easy access to form fields
