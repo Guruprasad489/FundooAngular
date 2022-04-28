@@ -10,7 +10,7 @@ export class UserService {
   constructor (private httpService : HttpService) { }
 
   registration(reqData : any){
-    console.log(reqData)
+    // console.log(reqData)
     let header = {
       headers:new HttpHeaders({
         'Content-type':'application/json',
@@ -21,7 +21,7 @@ export class UserService {
   }
 
   login(reqData : any){
-    console.log(reqData)
+    // console.log(reqData)
     let header = {
       header:new HttpHeaders({
         'Content-type':'application/json',

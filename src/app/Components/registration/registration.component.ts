@@ -35,8 +35,8 @@ export class RegistrationComponent implements OnInit {
 
         onSubmit() {
             this.submitted = true;
-            console.log(this.registerForm.value, "reg success");
-            // stop here if form is invalid
+            // console.log(this.registerForm.value, "reg success");
+
             if (this.registerForm.valid) {
                 let reqData = {
                     firstName : this.registerForm.value.firstName,
