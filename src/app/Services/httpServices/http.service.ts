@@ -18,11 +18,15 @@ export class HttpService {
     return this.httpClient.get(this.baseurl + url, tokenRequired && httpOptions);
   }
 
-  putService(){  }
+  putService(url : string='', reqData: any,  tokenRequired: boolean = false, httpOptions: any = {} ){ 
+    return this.httpClient.put(this.baseurl + url, reqData, tokenRequired && httpOptions);
+   }
 
   DeleteService(url : string='',  tokenRequired: boolean = false, httpOptions: any = {} ){
     return this.httpClient.delete(this.baseurl + url, tokenRequired && httpOptions);
   }
 
-  patchService(){  }
+  patchService(url : string='',reqData: any,  tokenRequired: boolean = false, httpOptions: any = {} ){ 
+    return this.httpClient.patch(this.baseurl + url, reqData, tokenRequired && httpOptions);
+   }
 }

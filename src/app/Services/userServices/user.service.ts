@@ -30,4 +30,26 @@ export class UserService {
     }
     return this.httpService.postService('User/Login', reqData, false, header);
   }
+
+  forgotPassword(reqData : any){
+    // console.log(reqData)
+    let header = {
+      header:new HttpHeaders({
+        'Content-type':'application/json',
+        // 'Authorization':'token'
+      })
+    }
+    return this.httpService.postService('User/ForgotPassword', reqData, false, header);
+  }
+
+  resetPassword(reqData : any){
+    // console.log(reqData)
+    let header = {
+      header:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':'token'
+      })
+    }
+    return this.httpService.putService('User/ResetPassword', reqData, false, header);
+  }
 }

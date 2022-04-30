@@ -12,6 +12,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 
 import { RegistrationComponent } from './Components/registration/registration.component';
@@ -20,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { DashBoardComponent } from './Components/dash-board/dash-board.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DashBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,10 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

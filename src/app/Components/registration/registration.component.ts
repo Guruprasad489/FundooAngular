@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/userServices/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 // import { ConfirmedValidator } from './confirmed.validator';
 
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   registerForm!: FormGroup;
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder, private userService : UserService ) { }
+    constructor(private formBuilder: FormBuilder, private userService : UserService, private _snackBar: MatSnackBar ) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -24,7 +25,7 @@ export class RegistrationComponent implements OnInit {
             email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-zA-Z0-9]{3,}([._+-][a-zA-Z0-9]{1,})?@[a-zA-Z0-9]{1,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$")]],
             password: ['', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[&%$#@?^*!~]).{8,}$")]],
             confirmPassword: ['', Validators.required]
-        }
+        },
         // , {
         //     validator: ConfirmedValidator('password', 'confirmPassword')
         // }
@@ -46,7 +47,12 @@ export class RegistrationComponent implements OnInit {
                   }
                   this.userService.registration(reqData).subscribe((response:any)=>{
                       console.log("Register successful", response);
+                      this._snackBar.open('User registered successfully', '', {
+                          duration: 3000,
+                          verticalPosition: 'bottom'
+                      })
                   });
+                  
             }
             
             // display form values on success
@@ -56,6 +62,15 @@ export class RegistrationComponent implements OnInit {
         onReset() {
             this.submitted = false;
             this.registerForm.reset();
+        }
+        openSnackBar() {
+            this._snackBar.openFromComponent(MatSnackBar, {
+              duration: 2000,
+            });
+        }
+        ShowPassword(){
+            var password = document. getElementById('user_password');
+            
         }
 }
 
