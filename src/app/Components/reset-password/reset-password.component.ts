@@ -13,6 +13,7 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPasswordForm!: FormGroup;
   submitted = false;
+  hide : boolean = true;
 
   constructor(private formBuilder: FormBuilder, private userService : UserService, private _snackBar: MatSnackBar) { }
 
@@ -35,7 +36,7 @@ export class ResetPasswordComponent implements OnInit {
               }
               this.userService.resetPassword(reqData).subscribe((response:any)=>{
                   console.log("Password changed successfully", response);
-                  this._snackBar.open('Password changed successfully', '', {
+                  this._snackBar.open('Congratulations! Password changed successfully', '', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     horizontalPosition: 'center'
@@ -51,5 +52,7 @@ export class ResetPasswordComponent implements OnInit {
           this.submitted = false;
           this.resetPasswordForm.reset();
       }
-
+      ShowPassword(){
+        this.hide = !this.hide;            
+    }
 }

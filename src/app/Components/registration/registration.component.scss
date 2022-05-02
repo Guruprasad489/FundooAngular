@@ -107,6 +107,18 @@ mat-flat-button {
         max-width: 80%;
         min-width: 290px;
         font-size: 14px;
+        padding: 10px;
+    }
+    .btn-basic, .btn-primary{
+        font-size: 14px;
+    }
+}
+@media (max-width: 375px) {
+    .container{
+        max-width: 80%;
+        min-width: 225px;
+        font-size: 14px;
+        padding: 10px;
     }
     .btn-basic, .btn-primary{
         font-size: 14px;

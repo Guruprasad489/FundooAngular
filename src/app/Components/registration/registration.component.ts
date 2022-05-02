@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm!: FormGroup;
     submitted = false;
+    hide : boolean = true;
 
     constructor(private formBuilder: FormBuilder, private userService : UserService, private _snackBar: MatSnackBar ) { }
 
@@ -69,8 +70,7 @@ export class RegistrationComponent implements OnInit {
             });
         }
         ShowPassword(){
-            var password = document. getElementById('user_password');
-            
+            this.hide = !this.hide;            
         }
 }
 

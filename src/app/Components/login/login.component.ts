@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
     submitted = false;
+    hide : boolean = true;
 
     constructor(private formBuilder: FormBuilder, private userService : UserService, private _snackBar: MatSnackBar ) { }
 
@@ -39,7 +40,8 @@ export class LoginComponent implements OnInit {
                       this._snackBar.open('Logged in successfully', '', {
                         duration: 3000,
                         verticalPosition: 'bottom',
-                        horizontalPosition: 'center'
+                        horizontalPosition: 'center',
+                        panelClass: ['snackbar-green']
                     })
                   });
             }
@@ -52,5 +54,7 @@ export class LoginComponent implements OnInit {
             this.submitted = false;
             this.loginForm.reset();
         }
-
+        ShowPassword(){
+          this.hide = !this.hide;            
+      }
 }

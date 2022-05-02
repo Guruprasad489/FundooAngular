@@ -6,15 +6,20 @@ import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { TakeNoteComponent } from './Components/take-note/take-note.component';
 
 const routes: Routes = [
   {path:'register',component:RegistrationComponent},
   {path:'login',component:LoginComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent},
-  {path: '', redirectTo: '/register', pathMatch: 'full'},
-  {path: '**', component: PageNotFoundComponent},
-  {path: 'dash-board', component: DashBoardComponent}
+  {path: 'dash-board', component: DashBoardComponent,
+    children:[
+      {path: 'take-note', component: TakeNoteComponent}
+    ]
+  },
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

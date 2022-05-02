@@ -17,7 +17,7 @@
         </div>
         
         <form class="form-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="form-group" fxLayout="row" fxLayout.lt-lg="column" fxLayout.lt-lg="column" >
+            <div class="form-group" fxLayout="row" fxLayout.lt-lg="column" >
                 <mat-form-field appearance="outline" class="form-field" >
                     <mat-label>First Name</mat-label>
                     <input matInput type="text" placeholder="First Name" formControlName="firstName" >
@@ -31,10 +31,10 @@
             </div>
             <div class="form-group">
                 <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>Username</mat-label>
+                    <mat-label>Username/Email</mat-label>
                     <input matInput type="email" placeholder="Ex: example@gmail.com" formControlName="email">
                     <!-- <span matSuffix>@gmail.com</span> -->
-                    <mat-hint>You can use letters, numbers & periods(Email)</mat-hint>
+                    <mat-hint>You can use letters, numbers & periods</mat-hint>
                     <mat-error>Username is reqiured</mat-error>
                 </mat-form-field>
             </div>
@@ -44,20 +44,20 @@
             <div class="form-group" fxLayout="row" fxLayout.lt-lg="column" fxLayout.lt-lg="column">
                 <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <input matInput matInput [type]="hide?'password':'text'" placeholder="Password" formControlName="password">
                     <mat-hint>Use 8 or more characters <!--with a mix of letters, numbers & symbols--></mat-hint>
                     <mat-error>Password is required</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
-                    <mat-error>Confirm Password is required</mat-error>
+                    <input matInput [type]="hide?'password':'text'" placeholder="Confirm Password" formControlName="confirmPassword">
+                    <mat-error>Password does not match</mat-error>
                     <!-- <mat-hint>Hint</mat-hint> -->
                 </mat-form-field>
             </div>
             <div class="form-group form-field">
                 <section class="example-section">
-                    <mat-checkbox class="example-margin" onclick="ShowPassword();">Show Password</mat-checkbox>
+                    <mat-checkbox class="example-margin" (click)="ShowPassword();">Show Password</mat-checkbox>
                 </section>
             </div>
             <br>

@@ -24,6 +24,7 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { DashBoardComponent } from './Components/dash-board/dash-board.component';
+import { TakeNoteComponent } from './Components/take-note/take-note.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DashBoardComponent } from './Components/dash-board/dash-board.component
     ForgotPasswordComponent,
     ResetPasswordComponent,
     PageNotFoundComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    TakeNoteComponent
   ],
   imports: [
     BrowserModule,

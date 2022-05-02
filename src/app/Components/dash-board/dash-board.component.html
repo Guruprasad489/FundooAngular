@@ -1,0 +1,72 @@
+<!-- <Div  class="mat-toolbar"> -->
+<mat-toolbar class="mat-toolbar">
+    <mat-toolbar-row class="toolbar-row" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div class="fundoo" fxLayout="row" fxLayoutAlign="center center" style="font-weight:500">
+                <button mat-icon-button>
+                    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+                </button>
+                <img class="logo" src="/assets/dashboard-logo.png" width="44px" height="40px" >
+                <p style="font-size: 26px ; color: #4285F4">F</p>
+                <p style="font-size: 26px ; color: #EA4335">u</p>
+                <p style="font-size: 26px ; color: #FBBC05">n</p>
+                <p style="font-size: 26px ; color: #4285F4">d</p>
+                <p style="font-size: 26px ; color: #34A853">o</p>
+                <p style="font-size: 26px ; color: #EA4335">o</p>
+            </div>
+            
+            <mat-form-field class="search" appearance="outline" fxHide fxShow.gt-xs >
+                <input matInput class="search" type="search" placeholder="Search..." >
+                <span mat-icon-button matPrefix><img src="/assets/Dashboard-icons/Search-icon.svg"></span>
+                <span mat-icon-button matSuffix type="button" style="visibility: hidden;"><img src="/assets/Dashboard-icons/Cancel-Search.svg"></span>
+            </mat-form-field>
+
+            <mat-nav-list class="mat-nav-list" fxLayout="row">
+                <button mat-icon-button><i class="material-icons">&#xe5d5;</i></button>
+                <button mat-icon-button> <img src="/assets/Dashboard-icons/List.png" width="24px" height="24px"></button>
+                <button mat-icon-button> <img src="/assets/Dashboard-icons/settings.svg" width="24px" height="24px"></button>
+                <span style="width: 24px;" fxHide.lt-md></span>
+                <button mat-icon-button> <img src="/assets/Dashboard-icons/circled-menu.png" width="24px" height="24px"> </button>
+                <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"> </button>
+            </mat-nav-list>
+
+            <!-- <div class="toolbar-right">
+                <button mat-icon-button> <i class="material-icons">&#xe5d5;</i> </button>
+                <button mat-icon-button> <i class="material-icons">&#xe8f2;</i> </button>
+                <button mat-icon-button> <i class="material-icons">&#xe8b8;</i> </button>
+                <button mat-icon-button> <i class="material-icons">&#xe5c3;</i> </button>
+                <button mat-icon-button> <i class="material-icons">&#xe853;</i> </button>
+            </div> -->
+        
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- </Div> -->
+<mat-sidenav-container>
+    <!-- <mat-sidenav opened="true" mode="side">
+        <mat-nav-list class="mat-nav-list">
+            <a mat-list-item><img src="/assets/Dashboard-icons/Notes.svg"></a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Reminder.svg"></a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Label.svg"></a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/EditLabel.svg"> </a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Archive.svg"> </a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Bin.svg" > </a>
+        </mat-nav-list>
+    </mat-sidenav> -->
+    <mat-sidenav #sidenav opened="true" mode="side">
+        <mat-nav-list class="mat-nav-list">
+            <a mat-list-item><img src="/assets/Dashboard-icons/Notes.svg">Notes</a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Reminder.svg">Reminders</a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Label.svg">Labels</a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/EditLabel.svg"> Edit labels</a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Archive.svg"> Archive</a>
+            <a mat-list-item><img src="/assets/Dashboard-icons/Bin.svg" > Bin</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height:88vh">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
