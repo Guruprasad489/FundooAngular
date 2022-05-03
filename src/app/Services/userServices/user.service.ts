@@ -6,8 +6,11 @@ import { HttpService } from '../httpServices/http.service';
   providedIn: 'root'
 })
 export class UserService {
+  token : any;
 
-  constructor (private httpService : HttpService) { }
+  constructor (private httpService : HttpService) {
+    this.token = localStorage.getItem('token');
+   }
 
   registration(reqData : any){
     // console.log(reqData)
@@ -47,9 +50,9 @@ export class UserService {
     let header = {
       header:new HttpHeaders({
         'Content-type':'application/json',
-        'Authorization':'token'
+        'Authorization':`Bearer ${this.token}`
       })
     }
-    return this.httpService.putService('User/ResetPassword', reqData, false, header);
+    return this.httpService.putService('User/ResetPassword', reqData, true, header);
   }
 }

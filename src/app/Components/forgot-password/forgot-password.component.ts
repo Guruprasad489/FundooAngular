@@ -33,6 +33,8 @@ export class ForgotPasswordComponent implements OnInit {
                   }
                   this.userService.forgotPassword(reqData).subscribe((response:any)=>{
                       console.log("Reset link sent successfully", response);
+                      localStorage.setItem("token",response.token);
+
                       this._snackBar.open('Reset link sent successfully', '', {
                         duration: 3000,
                         verticalPosition: 'bottom'

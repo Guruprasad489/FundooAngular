@@ -37,7 +37,6 @@ export class RegistrationComponent implements OnInit {
 
         onSubmit() {
             this.submitted = true;
-            // console.log(this.registerForm.value, "reg success");
 
             if (this.registerForm.valid) {
                 let reqData = {
@@ -53,11 +52,8 @@ export class RegistrationComponent implements OnInit {
                           verticalPosition: 'bottom'
                       })
                   });
-                  
+
             }
-            
-            // display form values on success
-            // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
         }
     
         onReset() {

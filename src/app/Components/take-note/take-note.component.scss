@@ -1,0 +1,29 @@
+// .take-note{
+//     text-align: center;
+//     margin: 0px 20% 0px 20%;
+// }
+.take-note{
+    margin: 20px 0px 20px 0px;
+    display: flex;
+    width: 580px;
+    flex-direction: column;
+    align-content: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px gray;
+    border: 1px solid lightgray;
+}
+
+button:hover{
+    background-color: rgb(247, 233, 217) ;
+}
+
+ ::placeholder{
+    font-size: 16px;
+}
+
+@media (max-width: 800px) {
+   .take-note{
+       width: 330px ;
+   }
+}
+

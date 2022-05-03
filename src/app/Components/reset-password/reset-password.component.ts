@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/userServices/user.service';
 
 
@@ -15,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   submitted = false;
   hide : boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private userService : UserService, private _snackBar: MatSnackBar) { }
+  constructor(private formBuilder: FormBuilder, private userService : UserService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
       this.resetPasswordForm = this.formBuilder.group({
@@ -36,6 +37,8 @@ export class ResetPasswordComponent implements OnInit {
               }
               this.userService.resetPassword(reqData).subscribe((response:any)=>{
                   console.log("Password changed successfully", response);
+                  this.router.navigateByUrl('/login')
+
                   this._snackBar.open('Congratulations! Password changed successfully', '', {
                     duration: 3000,
                     verticalPosition: 'bottom',
