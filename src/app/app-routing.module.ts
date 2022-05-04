@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'register',component:RegistrationComponent},
   {path:'login',component:LoginComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
-  {path:'reset-password',component:ResetPasswordComponent},
+  {path:'reset-password/:token',component:ResetPasswordComponent},
   {path: 'dash-board', component: DashBoardComponent,
     children:[
       {path:'', redirectTo:'/dash-board/notes', pathMatch:'full' },
