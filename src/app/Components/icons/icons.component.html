@@ -1,9 +1,10 @@
-<div class="icons">
-    <button mat-icon-button> <img src="/assets/Note-icons/add_alert.svg" width="20px" height="20px"></button>
-    <button mat-icon-button> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
-    <button mat-icon-button> <img src="/assets/Note-icons/color.svg" width="20px" height="20px"></button>
-    <button mat-icon-button> <img src="/assets/Note-icons/image.svg" width="20px" height="20px"></button>
-    <button mat-icon-button> <img src="/assets/Note-icons/Archive.svg" width="20px" height="20px"></button>
-    <button mat-icon-button> <img src="/assets/Note-icons/more.svg" width="20px" height="20px"></button>
+<div class="icons" fxFlex="noshrink">
+    <button mat-icon-button matTooltip="Remind me"> <img src="/assets/Note-icons/add_alert.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Collaborator"> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Background color"> <img src="/assets/Note-icons/color.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Add image"> <img src="/assets/Note-icons/image.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Archive" (click)="archiveUnArchive();" *ngIf="!isArchive"> <img src="/assets/Note-icons/Archive.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Unarchive" (click)="archiveUnArchive();" *ngIf="isArchive"> <img src="/assets/Note-icons/unArchive.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="More"> <img src="/assets/Note-icons/more.svg" width="20px" height="20px"></button>
 </div>
 

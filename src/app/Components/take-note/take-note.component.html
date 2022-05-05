@@ -3,24 +3,22 @@
 
   <div *ngIf="takeNote" fxLayout="row" fxLayoutAlign="space-between center">
     <mat-card-title > <input matInput placeholder="Title" [(ngModel)]="title" required> </mat-card-title>
-    <button mat-icon-button> <img src="/assets/Note-icons/pin.svg" width="20px" height="20px"></button>
-    <!-- <button mat-icon-button> <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px"></button> -->
+    <button mat-icon-button matTooltip="Pin" (click)="pinUnPin();" *ngIf="!isPin"> <img src="/assets/Note-icons/pin.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin();" *ngIf="isPin"> <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px"></button>
   </div>
 
-  <div (click)="createNote()" fxLayout="row" fxLayoutAlign="space-between center" >
-    <!-- <mat-card-subtitle  >  -->
-      <input class="create" matInput placeholder="Take a note..." [(ngModel)]="description" style="width: 400px;" required> 
-    <!-- </mat-card-subtitle> -->
+  <div (click)="clickTakeNote()" fxLayout="row" fxLayoutAlign="space-between center" >
+      <input class="description" matInput placeholder="Take a note..." [(ngModel)]="description" style="width: 400px;" required> 
     <div *ngIf="!takeNote" fxLayoutAlign="space-between center" fxFlex="noshrink">
-      <button mat-icon-button> <img src="/assets/Note-icons/check_box.svg" width="24px" height="24px"></button>
-      <button mat-icon-button> <img src="/assets/Note-icons/brush.svg" width="24px" height="24px"></button>
-      <button mat-icon-button> <img src="/assets/Note-icons/image.svg" width="24px" height="24px"></button>
+      <button mat-icon-button matTooltip="New list"> <img src="/assets/Note-icons/check_box.svg" width="24px" height="24px"></button>
+      <button mat-icon-button matTooltip=" New note with drawing"> <img src="/assets/Note-icons/brush.svg" width="24px" height="24px"></button>
+      <button mat-icon-button matTooltip=" New note with image"> <img src="/assets/Note-icons/image.svg" width="24px" height="24px"></button>
     </div>
   </div>
 
     <mat-card-actions *ngIf="takeNote" fxLayout="row" fxLayoutAlign="space-between center">
       <app-icons></app-icons>
-      <button mat-flat-button (click)="closeNote();">Close</button>
+      <button mat-flat-button matTooltip="Create Note" (click)="createNote();">Close</button>
     </mat-card-actions>
 
   </mat-card>

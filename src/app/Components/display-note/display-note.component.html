@@ -1,22 +1,37 @@
+ <mat-card class="take-note">
 
-<mat-card class="take-note">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <input matInput class="mat-title" placeholder="Display Title" required>
+    <button mat-icon-button matTooltip="Pin" (click)="pinUnPin();" *ngIf="!isPin"> <img src="/assets/Note-icons/pin.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin();" *ngIf="isPin"> <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px"></button>
+  </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <!-- <mat-card-title >  -->
-        <input matInput class="mat-title" placeholder="Display Title" required> 
-      <!-- </mat-card-title> -->
-      <button mat-icon-button> <img src="/assets/Note-icons/pin.svg" width="20px" height="20px"></button>
-      <!-- <button mat-icon-button> <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px"></button> -->
-    </div>
-  
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <textarea matInput placeholder="Display note..." style="width: 100%; height:max-content;" required> </textarea>
-    </div>
-  
-      <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
-        <app-icons></app-icons>
-        <button mat-flat-button >Close</button>
-      </mat-card-actions>
-  
-    </mat-card>
-  
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <textarea matInput placeholder="Display note..." style="width: 100%; height:max-content;" required> </textarea>
+  </div>
+
+  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <app-icons></app-icons>
+    <!-- <button mat-flat-button>Close</button> -->
+  </mat-card-actions>
+
+</mat-card> 
+
+
+
+<!-- <div class="take-note" style="padding:10px">
+
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <input mat-dialog-title matInput class="mat-title" placeholder="Display Title" required>
+  <button mat-icon-button> <img src="/assets/Note-icons/pin.svg" width="20px" height="20px"></button>
+</div>
+
+<div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">
+    <textarea matInput placeholder="Display note..." style="width: 100%; height:max-content;" required> </textarea>
+</div>
+
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <app-icons></app-icons>
+</div>
+
+</div> -->

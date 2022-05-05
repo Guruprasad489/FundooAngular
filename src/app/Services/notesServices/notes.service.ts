@@ -43,4 +43,26 @@ export class NotesService {
     }
     return this.httpService.getService('Notes/View/'+id, true, header);
   }
+
+  updateNote(reqData : any, id : any){
+    // console.log(reqData)
+    let header = {
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.putService('Notes/Update/'+id, reqData, true, header);
+  }
+
+  deleteNote(id : any){
+    // console.log(id)
+    let header = {
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':`Bearer ${this.token}`
+      })
+    }
+    return this.httpService.deleteService('Notes/Delete/'+id, true, header);
+  }
 }

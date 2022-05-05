@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./display-note.component.scss']
 })
 export class DisplayNoteComponent implements OnInit {
+  isPin: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  pinUnPin(){
+    this.isPin = !this.isPin;            
+}
 
 }

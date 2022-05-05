@@ -20,8 +20,8 @@ export class DashBoardComponent implements OnInit {
     })
   }
 
-  sideNav(){
-    this.sidenavText = !this.sidenavText
-  }
+  // sideNav(){
+  //   this.sidenavText = !this.sidenavText
+  // }
 
 }

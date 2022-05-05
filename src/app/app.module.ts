@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 import { RegistrationComponent } from './Components/registration/registration.component';
@@ -62,7 +63,8 @@ import { IconsComponent } from './Components/icons/icons.component';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
