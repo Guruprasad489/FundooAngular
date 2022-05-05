@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from 'src/app/Services/notesServices/notes.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -14,10 +14,12 @@ export class TakeNoteComponent implements OnInit {
     description: string = "";
     color: string = "";
     image: string = "";
-    // reminder: Date= "2022-05-04T07:59:37.872Z";
+    // reminder: Date= new Date();
     isArchive: boolean = false;
     isPin: boolean = false;
     isTrash: boolean = false;
+
+    @Output() createNoteEvent = new EventEmitter<any>();
 
     constructor(private notesService: NotesService, private _snackBar: MatSnackBar) { }
 
@@ -45,6 +47,8 @@ export class TakeNoteComponent implements OnInit {
             }
             this.notesService.createNote(reqData).subscribe((response: any) => {
                 console.log("Note Created successfully", response);
+                this.createNoteEvent.emit(response);
+
                 this.title = "",
                 this.description="";
                 this.color="";

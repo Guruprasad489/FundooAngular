@@ -1,3 +1,4 @@
+import { getLocaleEraNames } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService } from '../httpServices/http.service';
@@ -6,63 +7,64 @@ import { HttpService } from '../httpServices/http.service';
   providedIn: 'root'
 })
 export class NotesService {
-  token : any; 
+  token: any;
 
-  constructor(private httpService : HttpService) {
+  constructor(private httpService: HttpService) {
     this.token = localStorage.getItem('token');
-   }
-  
-  createNote(reqData : any){
+  }
+
+  createNote(reqData: any) {
     // console.log(reqData)
     let header = {
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
     return this.httpService.postService('Notes/Create', reqData, true, header);
   }
 
-  getAllNotes(){
+  getAllNotes() {
     let header = {
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':`Bearer ${this.token}`
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
       })
     }
     return this.httpService.getService('Notes/GetAll', true, header);
   }
 
-  displayNote(id : any){
-    // console.log(id)
-    let header = {
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':`Bearer ${this.token}`
-      })
-    }
-    return this.httpService.getService('Notes/View/'+id, true, header);
-  }
+  // displayNote(id: any) {
+  //   // console.log(id)
+  //   let header = {
+  //     headers: new HttpHeaders({
+  //       'Content-type': 'application/json',
+  //       'Authorization': `Bearer ${this.token}`
+  //     })
+  //   }
+  //   return this.httpService.getService('Notes/View/noteId?noteId=' +id, true, header);
+  // }
 
-  updateNote(reqData : any, id : any){
+  updateNote(reqData: any, id: any) {
     // console.log(reqData)
     let header = {
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.putService('Notes/Update/'+id, reqData, true, header);
+    return this.httpService.putService('Notes/Update?noteId=' +id, reqData, true, header);
+    // this.batchBaseURL + `batch/search/${searchBy}/${tab}?word=${searchWord}`
   }
 
-  deleteNote(id : any){
+  deleteNote(id: any) {
     // console.log(id)
     let header = {
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':`Bearer ${this.token}`
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.deleteService('Notes/Delete/'+id, true, header);
+    return this.httpService.deleteService('Notes/Delete?noteId=' +id, true, header);
   }
 }

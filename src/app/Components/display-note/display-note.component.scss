@@ -1,12 +1,20 @@
-.take-note{
+.display-notes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.note{
     margin: 10px;
     display: flex;
     flex-direction: column;
     align-content: center;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 1px 1px 4px gray;
     border: 1px solid lightgray;
-    max-width: 300px;
+    width: 300px;
+    justify-content: space-between;
 }
 
 button:hover{

@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { RegistrationComponent } from './Components/registration/registration.component';
@@ -31,6 +32,7 @@ import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { DisplayNoteComponent } from './Components/display-note/display-note.component';
 import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { IconsComponent } from './Components/icons/icons.component';
+import { UpdateComponent } from './Components/update/update.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { IconsComponent } from './Components/icons/icons.component';
     TakeNoteComponent,
     DisplayNoteComponent,
     GetAllNotesComponent,
-    IconsComponent
+    IconsComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { IconsComponent } from './Components/icons/icons.component';
     MatListModule,
     MatCardModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

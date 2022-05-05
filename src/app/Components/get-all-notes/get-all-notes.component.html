@@ -1,8 +1,8 @@
 <div class="notelist" fxLayout="column" fxLayoutAlign="center center" >
-    <app-take-note></app-take-note>
+    <app-take-note (createNoteEvent)="refresh($event)"></app-take-note>
     
-    <div class="display" fxLayoutAlign="center start">
-        <app-display-note></app-display-note>
-        <app-display-note></app-display-note>
+    <div class="display" fxLayout="row"  fxLayoutAlign="start start">
+        <app-display-note [notesArray]="noteList" ></app-display-note>
+        
     </div>
 </div>

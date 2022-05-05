@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotesService } from 'src/app/Services/notesServices/notes.service';
+// import { NotesService } from 'src/app/Services/notesServices/notes.service';
 
 @Component({
   selector: 'app-dash-board',
@@ -9,16 +9,12 @@ import { NotesService } from 'src/app/Services/notesServices/notes.service';
 export class DashBoardComponent implements OnInit {
   public sidenavText : boolean=true;
 
-  constructor(private notesService : NotesService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  getAllNotes(){
-    this.notesService.getAllNotes().subscribe((response:any)=>{
-      console.log("GetAll Notes successful", response);
-    })
-  }
+ 
 
   // sideNav(){
   //   this.sidenavText = !this.sidenavText

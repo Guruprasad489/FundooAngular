@@ -1,0 +1,21 @@
+<div class="take-note" style="padding:10px">
+
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <span mat-dialog-title> {{noteData.title}} </span>
+  <button mat-icon-button matTooltip="Pin" (click)="pinUnPin();" *ngIf="!noteData.isPin"> 
+      <img src="/assets/Note-icons/pin.svg" width="20px" height="20px">
+  </button>
+  <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin();" *ngIf="noteData.isPin"> 
+    <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px">
+  </button>
+</div>
+
+<div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">{{noteData.description}}
+</div>
+
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <app-icons></app-icons>
+  <button mat-button [mat-dialog-close]="true" matTooltip="Update" (click)="updateNote()">Close</button>
+</div>
+
+</div>
