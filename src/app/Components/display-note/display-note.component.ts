@@ -9,29 +9,32 @@ import { UpdateComponent } from '../update/update.component';
   styleUrls: ['./display-note.component.scss']
 })
 export class DisplayNoteComponent implements OnInit {
-  // isPin: boolean = false;
 
-  constructor(public dialog: MatDialog) { console.log(this.notesArray); }
   @Input() notesArray: any;
+  constructor(public dialog: MatDialog) { /*console.log(this.notesArray);*/ }
 
   ngOnInit(): void {
-    console.log(this.notesArray);
-  }
-
-  pinUnPin(isPin: boolean) {
-    console.log(isPin)
-    isPin = !isPin;
+    // console.log(this.notesArray);
   }
 
   openDialog(note:any){
     const dialogRef = this.dialog.open(UpdateComponent,{
-      width: '600px',
+      width: '700px',
       data: note
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed:' + result);
     });
+  }
+
+  pinUnPin(note: any) {
+    note.isPin = !note.isPin;
+    console.log(note.isPin)
+  }
+
+  iconRefresh(eventData:any){
+
   }
 
 }

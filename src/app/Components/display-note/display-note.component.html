@@ -1,22 +1,22 @@
 <div class="display-notes">
   <mat-card class="note" *ngFor="let note of notesArray">
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="note-title" fxLayout="row" fxLayoutAlign="space-between center">
       <span class="mat-title" (click)="openDialog(note)">{{note.title}}</span>
-      <button mat-icon-button matTooltip="Pin" (click)="pinUnPin(note.isPin);" *ngIf="!note.isPin"> 
+      <button mat-icon-button matTooltip="Pin" (click)="pinUnPin(note);" *ngIf="!note.isPin"> 
         <img src="/assets/Note-icons/pin.svg" width="20px" height="20px">
       </button>
-      <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin(note.isPin);" *ngIf="note.isPin"> 
+      <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin(note);" *ngIf="note.isPin"> 
         <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px">
       </button>
     </div>
 
-    <div  (click)="openDialog(note)">
-      <span>{{note.description}}</span>
+    <div class="description" fxLayout="row" fxLayoutAlign="start start" (click)="openDialog(note)">
+      <span >{{note.description}}</span>
     </div>
 
-    <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
-      <app-icons></app-icons>
+    <mat-card-actions class="icons" fxLayout="row" fxLayoutAlign="space-between center">
+      <app-icons [noteObj]="note" (changeNoteEvent)="iconRefresh($event)"></app-icons>
     </mat-card-actions>
 
   </mat-card>

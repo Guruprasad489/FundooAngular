@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
                   this.userService.login(reqData).subscribe((response:any)=>{
                       console.log("Login successful", response);
                       localStorage.setItem("token",response.token);
-                      this.router.navigateByUrl('/dash-board/notes')
+                      this.router.navigateByUrl('/home/notes')
 
                       this._snackBar.open('Logged in successfully', '', {
                         duration: 3000,
@@ -50,8 +50,6 @@ export class LoginComponent implements OnInit {
                   });
             }
     
-            // display form values on success
-            // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
         }
     
         onReset() {

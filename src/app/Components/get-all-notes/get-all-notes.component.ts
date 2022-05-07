@@ -16,7 +16,7 @@ export class GetAllNotesComponent implements OnInit {
 
   getAllNotes(){
     this.notesService.getAllNotes().subscribe((response:any)=>{
-      // console.log("GetAll Notes successful", response.data);
+      console.log("GetAll Notes successful", response.data);
       this.noteList = response.data;
       this.noteList.reverse();
       // console.log(this.noteList);
@@ -28,8 +28,8 @@ export class GetAllNotesComponent implements OnInit {
     this.noteList.reverse();
     this.noteList.push(eventData.data);
     this.noteList.reverse();
-    // console.log(this.noteList)
-    
+    console.log(this.noteList)
+
     // this.getAllNotes();
   }
 

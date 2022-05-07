@@ -3,8 +3,13 @@
     <button mat-icon-button matTooltip="Collaborator"> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
     <button mat-icon-button matTooltip="Background color"> <img src="/assets/Note-icons/color.svg" width="20px" height="20px"></button>
     <button mat-icon-button matTooltip="Add image"> <img src="/assets/Note-icons/image.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Archive" (click)="archiveUnArchive();" *ngIf="!isArchive"> <img src="/assets/Note-icons/Archive.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Unarchive" (click)="archiveUnArchive();" *ngIf="isArchive"> <img src="/assets/Note-icons/unArchive.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="More"> <img src="/assets/Note-icons/more.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Archive" (click)="archiveUnArchive(noteObj);" *ngIf="!isArchive"> <img src="/assets/Note-icons/Archive.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Unarchive" (click)="archiveUnArchive(noteObj);" *ngIf="isArchive"> <img src="/assets/Note-icons/unArchive.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="more"> 
+        <img src="/assets/Note-icons/more.svg" width="20px" height="20px">
+    </button>
+    <mat-menu #more="matMenu">
+        <button mat-menu-item (click)="trash(noteObj)" *ngIf="!isTrash">Delete note</button>
+    </mat-menu>
 </div>
 

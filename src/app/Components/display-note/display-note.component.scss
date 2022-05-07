@@ -13,8 +13,19 @@
     border-radius: 10px;
     box-shadow: 1px 1px 4px gray;
     border: 1px solid lightgray;
-    width: 300px;
+    width: 250px;
     justify-content: space-between;
+}
+.note-title{
+    height: 15%;
+    min-height: 40px;
+}
+.description{
+    height: 70%;
+}
+.icons{
+    height: 15%;
+    min-height: 40px;
 }
 
 button:hover{

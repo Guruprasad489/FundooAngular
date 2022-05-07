@@ -57,6 +57,17 @@ export class NotesService {
     // this.batchBaseURL + `batch/search/${searchBy}/${tab}?word=${searchWord}`
   }
 
+  trashNote(reqData: any, id: any) {
+    // console.log(reqData)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.patchService('Notes/IsTrash?noteId=' +id, reqData, true, header);
+  }
+
   deleteNote(id: any) {
     // console.log(id)
     let header = {
@@ -67,4 +78,28 @@ export class NotesService {
     }
     return this.httpService.deleteService('Notes/Delete?noteId=' +id, true, header);
   }
+
+  archiveNote(reqData: any, id: any) {
+    // console.log(reqData)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.patchService('Notes/IsArchive?noteId=' +id, reqData, true, header);
+  }
+
+  pinNote(reqData: any, id: any) {
+    // console.log(reqData)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.patchService('Notes/IsPinned?noteId=' +id, reqData, true, header);
+  }
+
+  
 }

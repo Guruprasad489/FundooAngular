@@ -1,16 +1,17 @@
 <div class="take-note" style="padding:10px">
 
 <div fxLayout="row" fxLayoutAlign="space-between center">
-  <span mat-dialog-title> {{noteData.title}} </span>
-  <button mat-icon-button matTooltip="Pin" (click)="pinUnPin();" *ngIf="!noteData.isPin"> 
+    <input class="mat-title" matInput mat-dialog-title [(ngModel)]="title">
+  <button mat-icon-button matTooltip="Pin" (click)="pinUnPin();" *ngIf="!isPin"> 
       <img src="/assets/Note-icons/pin.svg" width="20px" height="20px">
   </button>
-  <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin();" *ngIf="noteData.isPin"> 
+  <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin();" *ngIf="isPin"> 
     <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px">
   </button>
 </div>
 
-<div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">{{noteData.description}}
+<div  fxLayout="row" fxLayoutAlign="space-between center">
+    <textarea type="text" matInput mat-dialog-content  [(ngModel)]="description" style="min-height: 100px;"></textarea>
 </div>
 
 <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">

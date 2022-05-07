@@ -17,8 +17,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 import { RegistrationComponent } from './Components/registration/registration.component';
@@ -33,6 +34,10 @@ import { DisplayNoteComponent } from './Components/display-note/display-note.com
 import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { IconsComponent } from './Components/icons/icons.component';
 import { UpdateComponent } from './Components/update/update.component';
+import { TrashComponent } from './Components/trash/trash.component';
+import { ArchiveComponent } from './Components/archive/archive.component';
+
+import { AuthenticationGuard } from './authentication.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,9 @@ import { UpdateComponent } from './Components/update/update.component';
     DisplayNoteComponent,
     GetAllNotesComponent,
     IconsComponent,
-    UpdateComponent
+    UpdateComponent,
+    TrashComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +75,15 @@ import { UpdateComponent } from './Components/update/update.component';
     MatCardModule,
     FormsModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
+    
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ 
+    AuthenticationGuard 
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

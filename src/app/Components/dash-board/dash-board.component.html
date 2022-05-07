@@ -27,7 +27,10 @@
                 <button mat-icon-button> <img src="/assets/Dashboard-icons/settings.svg" width="24px" height="24px"></button>
                 <span style="width: 24px;" fxHide.lt-md></span>
                 <button mat-icon-button> <img src="/assets/Dashboard-icons/circled-menu.png" width="24px" height="24px"> </button>
-                <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"> </button>
+                <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"  [matMenuTriggerFor]="profile"> </button>
+                <mat-menu #profile="matMenu">
+                    <button mat-menu-item (click)="signOut()">Sign out</button>
+                </mat-menu>
             </mat-nav-list>
 
             <!-- <div class="toolbar-right">
@@ -42,7 +45,7 @@
 </mat-toolbar>
 <!-- </Div> -->
 <mat-sidenav-container>
-    <mat-sidenav #sidenav opened="true" mode="side">
+    <mat-sidenav #sidenav opened="true"  mode="side">
         <mat-nav-list class="mat-nav-list">
             <a mat-list-item >
                 <img src="/assets/Dashboard-icons/Notes.svg"> 

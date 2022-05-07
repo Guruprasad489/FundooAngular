@@ -54,6 +54,11 @@ button:hover{
     background-color: rgb(247, 233, 217) ;
 }
 
+::ng-deep .snackbar-green{
+    background-color:#72d18b;
+    color: black;
+}
+
 // .note{
 //     margin: 20px 30% 0px 30%;
 //     display: flex;
