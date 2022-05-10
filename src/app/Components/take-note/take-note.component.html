@@ -17,7 +17,7 @@
   </div>
 
     <mat-card-actions *ngIf="takeNote" fxLayout="row" fxLayoutAlign="space-between center">
-      <app-icons></app-icons>
+      <app-icons [noteObj]="data"></app-icons>
       <button mat-flat-button matTooltip="Create Note" (click)="createNote();">Close</button>
     </mat-card-actions>
 

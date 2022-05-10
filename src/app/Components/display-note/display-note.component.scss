@@ -11,9 +11,9 @@
     flex-direction: column;
     align-content: center;
     border-radius: 10px;
-    box-shadow: 1px 1px 4px gray;
+    // box-shadow: 1px 1px 4px gray;
     border: 1px solid lightgray;
-    width: 250px;
+    width: 275px;
     justify-content: space-between;
 }
 .note-title{
@@ -30,4 +30,15 @@
 
 button:hover{
     background-color: rgb(247, 233, 217) ;
+}
+
+@media (max-width: 726px) {
+    .note{
+        width: 350px;
+    }
+}
+@media (max-width: 475px) {
+    .note{
+        width: 300px;
+    }
 }

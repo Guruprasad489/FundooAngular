@@ -10,6 +10,8 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
 import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { AuthenticationGuard } from './authentication.guard';
+import { TrashComponent } from './Components/trash/trash.component';
+import { ArchiveComponent } from './Components/archive/archive.component';
 
 
 const routes: Routes = [
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: 'home', component: DashBoardComponent, canActivate:[AuthenticationGuard],
     children:[
       {path:'', redirectTo:'/home/notes', pathMatch:'full' },
-      {path: 'notes', component: GetAllNotesComponent}
+      {path: 'notes', component: GetAllNotesComponent},
+      {path: 'trash', component: TrashComponent},
+      {path: 'archive', component: ArchiveComponent}
     ]
   },
   {path: '', redirectTo: '/login', pathMatch: 'full'},

@@ -19,6 +19,9 @@ export class GetAllNotesComponent implements OnInit {
       console.log("GetAll Notes successful", response.data);
       this.noteList = response.data;
       this.noteList.reverse();
+      this.noteList = this.noteList.filter((object:any)=>{
+        return object.isArchive===false && object.isTrash===false
+      })
       // console.log(this.noteList);
     })
   }
@@ -33,6 +36,13 @@ export class GetAllNotesComponent implements OnInit {
     // this.getAllNotes();
   }
 
+  updatedData(value: any) {
+
+    this.getAllNotes();
+  }
   
+  updatedIcon(iconEvent:any){
+    this.getAllNotes();
+  }
 
 }

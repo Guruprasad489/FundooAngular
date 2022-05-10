@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from 'src/app/Services/notesServices/notes.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-take-note',
@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class TakeNoteComponent implements OnInit {
     public takeNote: boolean = false;
+    data : any;
 
     title: string = "";
     description: string = "";
@@ -24,7 +25,16 @@ export class TakeNoteComponent implements OnInit {
     constructor(private notesService: NotesService, private _snackBar: MatSnackBar) { }
 
     ngOnInit(): void {
-
+        this.data = {
+            title: this.title,
+            description: this.description,
+            color: this.color,
+            image: this.image,
+            // reminder: Date= new Date(),
+            isArchive: this.isArchive,
+            isPin: this.isPin,
+            isTrash: this.isTrash
+        }
     }
 
     clickTakeNote() {
@@ -50,9 +60,9 @@ export class TakeNoteComponent implements OnInit {
                 this.createNoteEvent.emit(response);
 
                 this.title = "",
-                this.description="";
-                this.color="";
-                this.image=""
+                    this.description = "";
+                this.color = "";
+                this.image = ""
                 //this.reminder=""
                 this.isArchive = false;
                 this.isPin = false;
@@ -64,8 +74,7 @@ export class TakeNoteComponent implements OnInit {
                 })
             });
         }
-        else
-        {
+        else {
             console.log("Both Title and Description should not be null or empty");
             this._snackBar.open('Both Title and Description should not be empty', '', {
                 duration: 3000,
@@ -74,11 +83,11 @@ export class TakeNoteComponent implements OnInit {
         }
     }
 
-    pinUnPin(){
-        this.isPin = !this.isPin;            
+    pinUnPin() {
+        this.isPin = !this.isPin;
     }
-    archiveUnArchive(){
-        this.isArchive = !this.isArchive;            
+    archiveUnArchive() {
+        this.isArchive = !this.isArchive;
     }
 
 }

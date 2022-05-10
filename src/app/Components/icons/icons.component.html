@@ -1,15 +1,28 @@
 <div class="icons" fxFlex="noshrink">
-    <button mat-icon-button matTooltip="Remind me"> <img src="/assets/Note-icons/add_alert.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Collaborator"> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Background color"> <img src="/assets/Note-icons/color.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Add image"> <img src="/assets/Note-icons/image.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Archive" (click)="archiveUnArchive(noteObj);" *ngIf="!isArchive"> <img src="/assets/Note-icons/Archive.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Unarchive" (click)="archiveUnArchive(noteObj);" *ngIf="isArchive"> <img src="/assets/Note-icons/unArchive.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="more"> 
-        <img src="/assets/Note-icons/more.svg" width="20px" height="20px">
+    <button mat-icon-button matTooltip="Remind me" *ngIf="!isTrash"> <img src="/assets/Note-icons/add_alert.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Collaborator" *ngIf="!isTrash"> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
+    
+    <button mat-icon-button matTooltip="Background color" [matMenuTriggerFor]="color" *ngIf="!isTrash"> <img src="/assets/Note-icons/color.svg" width="20px" height="20px"></button>
+    <mat-menu #color="matMenu">
+        <div fxLayout="row wrap" style="padding-left: 8px;">
+            <div *ngFor="let color of colorsArr" class="bg-color">
+                <button mat-icon-button mat-raised-button [matTooltip]="color.name" [style.background]="color?.Colorcode" (click)="changeColor(color?.Colorcode)"></button>
+            </div>
+        </div>
+    </mat-menu>
+
+    <button mat-icon-button matTooltip="Add image" *ngIf="!isTrash"> <img src="/assets/Note-icons/image.svg" width="20px" height="20px">  
+        <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)"> 
     </button>
+    
+    <button mat-icon-button matTooltip="Archive" (click)="archiveUnArchive(noteObj);" *ngIf="!isArchive && !isTrash"> <img src="/assets/Note-icons/Archive.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Unarchive" (click)="archiveUnArchive(noteObj);" *ngIf="isArchive && !isTrash"> <img src="/assets/Note-icons/unArchive.svg" width="20px" height="20px"></button>
+    
+    <button mat-icon-button matTooltip="Delete Forever" (click)="delete()" *ngIf="isTrash"> <img src="/assets/Note-icons/delete_forever.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Restore" (click)="trash(noteObj)" *ngIf="isTrash"> <img src="/assets/Note-icons/restore_from_trash.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="more" *ngIf="!isTrash"> <img src="/assets/Note-icons/more.svg" width="20px" height="20px"> </button>
     <mat-menu #more="matMenu">
-        <button mat-menu-item (click)="trash(noteObj)" *ngIf="!isTrash">Delete note</button>
+        <button mat-menu-item (click)="trash(noteObj)" >Delete note</button>
     </mat-menu>
 </div>
 

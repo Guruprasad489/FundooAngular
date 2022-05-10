@@ -1,5 +1,5 @@
 <div class="display-notes">
-  <mat-card class="note" *ngFor="let note of notesArray">
+  <mat-card class="note" *ngFor="let note of notesArray" [style.background]="note.color">
 
     <div class="note-title" fxLayout="row" fxLayoutAlign="space-between center">
       <span class="mat-title" (click)="openDialog(note)">{{note.title}}</span>

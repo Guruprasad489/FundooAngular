@@ -7,3 +7,20 @@
 button:hover{
     background-color: rgb(247, 233, 217) ;
 }
+
+.bg-color{
+    padding: 2px;
+}
+// .bg-color button:hover{
+
+// }
+
+// input[type=file]::-webkit-file-upload-button {
+//     visibility: hidden;
+//     user-select: none;
+// }
+input[type=file]{
+    // display: none;
+    user-select: none;
+    opacity: 0;
+}

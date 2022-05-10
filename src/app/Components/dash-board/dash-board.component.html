@@ -22,11 +22,12 @@
             </mat-form-field>
 
             <mat-nav-list class="mat-nav-list" fxLayout="row">
-                <button mat-icon-button><i class="material-icons">&#xe5d5;</i></button>
-                <button mat-icon-button> <img src="/assets/Dashboard-icons/List.png" width="24px" height="24px"></button>
+                <button mat-icon-button fxHide fxShow.xs> <img src="/assets/Dashboard-icons/Search-icon.svg"> </button>
+                <button mat-icon-button fxHide fxShow.gt-xs><i class="material-icons">&#xe5d5;</i></button>
+                <button mat-icon-button fxHide fxShow.gt-xs> <img src="/assets/Dashboard-icons/List.png" width="24px" height="24px"></button>
                 <button mat-icon-button> <img src="/assets/Dashboard-icons/settings.svg" width="24px" height="24px"></button>
                 <span style="width: 24px;" fxHide.lt-md></span>
-                <button mat-icon-button> <img src="/assets/Dashboard-icons/circled-menu.png" width="24px" height="24px"> </button>
+                <button mat-icon-button fxHide fxShow.gt-xs> <img src="/assets/Dashboard-icons/circled-menu.png" width="24px" height="24px"> </button>
                 <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"  [matMenuTriggerFor]="profile"> </button>
                 <mat-menu #profile="matMenu">
                     <button mat-menu-item (click)="signOut()">Sign out</button>
@@ -45,19 +46,19 @@
 </mat-toolbar>
 <!-- </Div> -->
 <mat-sidenav-container>
-    <mat-sidenav #sidenav opened="true"  mode="side">
+    <mat-sidenav #sidenav opened="false"  mode="side">
         <mat-nav-list class="mat-nav-list">
-            <a mat-list-item >
+            <a mat-list-item routerLink="notes">
                 <img src="/assets/Dashboard-icons/Notes.svg"> 
                 Notes
                 <!-- <span *ngIf="sidenavText ? true : false">Notes</span> -->
             </a>
-            <a mat-list-item>
+            <a mat-list-item routeLink="">
                 <img src="/assets/Dashboard-icons/Reminder.svg"> 
                 Reminders
                 <!-- <span *ngIf="sidenavText ? true : false">Reminders</span> -->
             </a>
-            <a mat-list-item>
+            <a mat-list-item routerLink="">
                 <img src="/assets/Dashboard-icons/Label.svg"> 
                 Labels
                 <!-- <span *ngIf="sidenavText ? true : false">Labels</span> -->
@@ -67,12 +68,12 @@
                 Edit labels
                 <!-- <span *ngIf="sidenavText ? true : false">Edit labels</span> -->
             </a>
-            <a mat-list-item>
+            <a mat-list-item routerLink="archive">
                 <img src="/assets/Dashboard-icons/Archive.svg"> 
                 Archive
                 <!-- <span *ngIf="sidenavText ? true : false">Archive</span> -->
             </a>
-            <a mat-list-item>
+            <a mat-list-item routerLink="trash">
                 <img src="/assets/Dashboard-icons/Bin.svg" > 
                 Bin
                 <!-- <span *ngIf="sidenavText ? true : false">Bin</span> -->

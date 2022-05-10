@@ -9,7 +9,7 @@ import { NotesService } from 'src/app/Services/notesServices/notes.service';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-  noteData: any;
+  // noteData: any;
 
   title: any
   description: any
@@ -46,8 +46,8 @@ export class UpdateComponent implements OnInit {
   }
 
   pinUnPin() {
-    //console.log(this.isPin)
     this.isPin = !this.isPin;
+    //console.log(this.isPin)
   }
 
   updateNote() {
@@ -65,7 +65,8 @@ export class UpdateComponent implements OnInit {
       }
       this.notesService.updateNote(reqData, this.noteId).subscribe((response: any) => {
         console.log("Note updated successfully", response);
-        //this.updateNoteEvent.emit(response);
+        this.updateNoteEvent.emit(response.data);
+        this.dialogRef.close(response);
 
         this._snackBar.open('Note updated successfully', '', {
           duration: 3000,

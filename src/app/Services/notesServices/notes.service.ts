@@ -57,7 +57,7 @@ export class NotesService {
     // this.batchBaseURL + `batch/search/${searchBy}/${tab}?word=${searchWord}`
   }
 
-  trashNote(reqData: any, id: any) {
+  trashNote(id: any) {
     // console.log(reqData)
     let header = {
       headers: new HttpHeaders({
@@ -65,7 +65,7 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/IsTrash?noteId=' +id, reqData, true, header);
+    return this.httpService.patchService('Notes/IsTrash?noteId=' +id, {}, true, header);
   }
 
   deleteNote(id: any) {
@@ -79,7 +79,7 @@ export class NotesService {
     return this.httpService.deleteService('Notes/Delete?noteId=' +id, true, header);
   }
 
-  archiveNote(reqData: any, id: any) {
+  archiveNote(id: any) {
     // console.log(reqData)
     let header = {
       headers: new HttpHeaders({
@@ -87,10 +87,10 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/IsArchive?noteId=' +id, reqData, true, header);
+    return this.httpService.patchService('Notes/IsArchive?noteId=' +id, {}, true, header);
   }
 
-  pinNote(reqData: any, id: any) {
+  pinNote(id: any) {
     // console.log(reqData)
     let header = {
       headers: new HttpHeaders({
@@ -98,8 +98,30 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/IsPinned?noteId=' +id, reqData, true, header);
+    return this.httpService.patchService('Notes/IsPinned?noteId=' +id, {}, true, header);
   }
+
+  changeColor(newColor: any, id: any) {
+     console.log(newColor, id)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.patchService('Notes/ChangeColor',{newColor: newColor, noteId:id}, true, header);
+  }
+
+  uploadImage(img: any, id: any) {
+    console.log(img, id)
+   let header = {
+     headers: new HttpHeaders({
+       'Content-type': 'application/json',
+       'Authorization': `Bearer ${this.token}`
+     })
+   }
+   return this.httpService.patchService('Notes/UploadImage/noteId',{imagePath: img, noteId:id}, true, header);
+ }
 
   
 }

@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotesService } from 'src/app/Services/notesServices/notes.service';
 import { UpdateComponent } from '../update/update.component';
 
 
@@ -9,9 +11,12 @@ import { UpdateComponent } from '../update/update.component';
   styleUrls: ['./display-note.component.scss']
 })
 export class DisplayNoteComponent implements OnInit {
+  iconMsg : any;
 
   @Input() notesArray: any;
-  constructor(public dialog: MatDialog) { /*console.log(this.notesArray);*/ }
+  //@Output() updateNoteEvent = new EventEmitter<any>();
+  @Output() updatedIconData = new EventEmitter<any>();
+  constructor(public dialog: MatDialog, private notesService: NotesService, private _snackBar: MatSnackBar) { /*console.log(this.notesArray);*/ }
 
   ngOnInit(): void {
     // console.log(this.notesArray);
@@ -25,16 +30,34 @@ export class DisplayNoteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed:' + result);
+      this.iconRefresh(result)
     });
   }
 
   pinUnPin(note: any) {
     note.isPin = !note.isPin;
-    console.log(note.isPin)
+    // console.log(note.isPin)
+    this.notesService.pinNote(note.noteId).subscribe((response: any) => {
+      console.log("Note Pin status changed", response.data);
+
+      if (response.data.isPin == true) {
+        this._snackBar.open('Note Pinned', '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
+      }
+      else {
+        this._snackBar.open('Note UnPinned', '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
+      }
+    })
   }
 
-  iconRefresh(eventData:any){
-
+  iconRefresh($event:any){
+    this.iconMsg = $event;
+    this.updatedIconData.emit(this.iconMsg);
   }
 
 }
