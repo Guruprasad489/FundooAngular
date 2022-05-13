@@ -53,7 +53,7 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.putService('Notes/Update?noteId=' +id, reqData, true, header);
+    return this.httpService.putService('Notes/Update?noteId=' + id, reqData, true, header);
     // this.batchBaseURL + `batch/search/${searchBy}/${tab}?word=${searchWord}`
   }
 
@@ -65,7 +65,7 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/IsTrash?noteId=' +id, {}, true, header);
+    return this.httpService.patchService('Notes/IsTrash?noteId=' + id, {}, true, header);
   }
 
   deleteNote(id: any) {
@@ -76,7 +76,7 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.deleteService('Notes/Delete?noteId=' +id, true, header);
+    return this.httpService.deleteService('Notes/Delete?noteId=' + id, true, header);
   }
 
   archiveNote(id: any) {
@@ -87,7 +87,7 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/IsArchive?noteId=' +id, {}, true, header);
+    return this.httpService.patchService('Notes/IsArchive?noteId=' + id, {}, true, header);
   }
 
   pinNote(id: any) {
@@ -98,30 +98,40 @@ export class NotesService {
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/IsPinned?noteId=' +id, {}, true, header);
+    return this.httpService.patchService('Notes/IsPinned?noteId=' + id, {}, true, header);
   }
 
   changeColor(newColor: any, id: any) {
-     console.log(newColor, id)
+    //console.log(newColor, id)
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.patchService('Notes/ChangeColor',{newColor: newColor, noteId:id}, true, header);
+    return this.httpService.patchService('Notes/ChangeColor', { newColor: newColor, noteId: id }, true, header);
   }
 
   uploadImage(img: any, id: any) {
     console.log(img, id)
-   let header = {
-     headers: new HttpHeaders({
-       'Content-type': 'application/json',
-       'Authorization': `Bearer ${this.token}`
-     })
-   }
-   return this.httpService.patchService('Notes/UploadImage/noteId',{imagePath: img, noteId:id}, true, header);
- }
+    let header = {
+      headers: new HttpHeaders({
+        //'Content-type': 'multipart/form-data',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.patchService('Notes/UploadImage/noteId?noteId='+id, img, true, header);
+  }
 
-  
+  removeImage(id: any) {
+    //console.log(id)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.patchService('Notes/RemoveImage/noteId?noteId=' + id, {}, true, header);
+  }
+
 }

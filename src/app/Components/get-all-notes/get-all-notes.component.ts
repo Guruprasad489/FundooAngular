@@ -8,6 +8,8 @@ import { NotesService } from 'src/app/Services/notesServices/notes.service';
 })
 export class GetAllNotesComponent implements OnInit {
  noteList : any=[]; 
+ noteListUnpinned : any=[]; 
+
   constructor(private notesService : NotesService) { }
 
   ngOnInit(): void {
@@ -20,7 +22,13 @@ export class GetAllNotesComponent implements OnInit {
       this.noteList = response.data;
       this.noteList.reverse();
       this.noteList = this.noteList.filter((object:any)=>{
-        return object.isArchive===false && object.isTrash===false
+        return object.isArchive===false && object.isTrash===false && object.isPin===true
+      })
+
+      this.noteListUnpinned = response.data;
+      // this.noteListUnpinned.reverse();
+      this.noteListUnpinned = this.noteListUnpinned.filter((object:any)=>{
+        return object.isArchive===false && object.isTrash===false && object.isPin===false
       })
       // console.log(this.noteList);
     })

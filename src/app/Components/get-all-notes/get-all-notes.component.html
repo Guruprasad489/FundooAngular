@@ -1,8 +1,19 @@
 <div class="notelist" fxLayout="column" fxLayoutAlign="center center" >
     <app-take-note (createNoteEvent)="refresh($event)" (updateNoteEvent)="updatedData($event)"></app-take-note>
     
-    <div class="display" fxLayout="row"  fxLayoutAlign="start start">
+    <div>
+    <!-- <div fxLayout="column"> -->
+    <!-- <span  *ngIf="noteList.length>0" >Pinned</span> -->
+    <div class="display" fxLayout="row" >
         <app-display-note [notesArray]="noteList" (updateNoteEvent)="updatedData($event)" (updatedIconData)="updatedIcon($event)"></app-display-note>
-        
+    </div>
+    <!-- </div> -->
+
+    <!-- <div fxLayout="column"> -->
+    <!-- <span  *ngIf="noteListUnpinned.length>0">Others</span> -->
+    <div class="display" fxLayout="row" >
+        <app-display-note [notesArray]="noteListUnpinned" (updateNoteEvent)="updatedData($event)" (updatedIconData)="updatedIcon($event)"></app-display-note>
+    </div>
+    <!-- </div> -->
     </div>
 </div>

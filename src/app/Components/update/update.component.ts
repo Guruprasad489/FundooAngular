@@ -27,7 +27,7 @@ export class UpdateComponent implements OnInit {
     private notesService: NotesService, private _snackBar: MatSnackBar) {
     this.title = data.title
     this.description = data.description
-    this.color = data.colour
+    this.color = data.color
     this.image = data.image
     //this.reminder = data.reminder
     this.isArchive = data.isArchive
@@ -80,6 +80,19 @@ export class UpdateComponent implements OnInit {
         duration: 3000,
         verticalPosition: 'bottom'
       })
+    }
+  }
+
+  iconRefresh(event:any){
+      if(event.data != (null || undefined)){
+      this.color = event.data.color
+      this.image = event.data.image
+      if(event.data.isTrash==true || event.data.isArchive==true){
+        this.dialogRef.close();
+      }
+    }
+    if(event.message == 'Image Removed Successfully'){
+      this.image =null
     }
   }
 }

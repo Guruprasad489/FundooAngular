@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 import { RegistrationComponent } from './Components/registration/registration.component';
@@ -38,6 +39,8 @@ import { TrashComponent } from './Components/trash/trash.component';
 import { ArchiveComponent } from './Components/archive/archive.component';
 
 import { AuthenticationGuard } from './authentication.guard';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { CollabComponent } from './Components/collab/collab.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,9 @@ import { AuthenticationGuard } from './authentication.guard';
     IconsComponent,
     UpdateComponent,
     TrashComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    FilterPipe,
+    CollabComponent
   ],
   imports: [
     BrowserModule,
@@ -76,8 +81,8 @@ import { AuthenticationGuard } from './authentication.guard';
     FormsModule,
     MatTooltipModule,
     MatDialogModule,
-    MatMenuModule
-    
+    MatMenuModule,
+    ImageCropperModule
   ],
   providers: [ 
     AuthenticationGuard 

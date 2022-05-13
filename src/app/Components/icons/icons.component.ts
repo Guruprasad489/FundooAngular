@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/Services/notesServices/notes.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { MatDialog } from '@angular/material/dialog';
+import { CollabComponent } from '../collab/collab.component';
+
 
 @Component({
   selector: 'app-icons',
@@ -11,7 +15,9 @@ export class IconsComponent implements OnInit {
 
   isArchive: any;
   isTrash: any;
-  url = '';
+  
+  imageChangedEvent:any;
+  private profilepic: any;
 
   colorsArr = [{Colorcode:"white", name:"White"},{Colorcode:"#f28b82", name:"Red"},{Colorcode:"#fbbc04", name:"Orange"},{Colorcode:"#fff475", name:"Yellow"},{Colorcode:"#ccff90", name:"Green"},{Colorcode:"#a7ffeb", name:"Teel"},
                {Colorcode:"#cbf0f8", name:"Blue"},{Colorcode:"#aecbfa", name:"Dark-Blue"},{Colorcode:"#d7aefb", name:"Purple"},{Colorcode:"#fdcfe8", name:"Pink"},{Colorcode:"#e6c9a8", name:"Brown"},{Colorcode:"#e8eaed", name:"Gray"}];
@@ -20,7 +26,7 @@ export class IconsComponent implements OnInit {
   @Input() noteObj: any;
   @Output() changeNoteEvent = new EventEmitter<any>();
 
-  constructor(private notesService: NotesService, private _snackBar: MatSnackBar) { }
+  constructor(private notesService: NotesService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -90,24 +96,58 @@ export class IconsComponent implements OnInit {
   }
 
   onSelectFile(event:any) {
+    //this.imageChangedEvent = event;
+    this.profilepic = event.target.files[0];
+    
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      console.log(event)
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => {                // called once readAsDataURL is completed
-        //this.url = event.target.result;
-        this.addImage();
-      }
+      this.addImage(this.profilepic);
     }
   }
 
-  addImage() {
-    //let imagePath = "/assets/Phoho_Gallery/"+this.image;
-    this.notesService.uploadImage(this.url, this.noteObj.noteId).subscribe((response: any) => {
+  addImage(file:any) {
+    const imagefile = new FormData();
+    imagefile.append('imagePath',file, file.name)
+
+    //console.log(imagefile, file)
+    this.notesService.uploadImage(imagefile, this.noteObj.noteId).subscribe((response: any) => {
       console.log("Image Successfully added to Note", response);
       this.changeNoteEvent.emit(response);
+
+      this._snackBar.open('Image Added Successfully', '', {
+        duration: 3000,
+        verticalPosition: 'bottom'
+      })
     })
   }  
+
+  removeImage() {
+      if(this.noteObj.image != null){
+      this.notesService.removeImage(this.noteObj.noteId).subscribe((response: any) => {
+        console.log("Image Successfully removed from the Note", response);
+        this.changeNoteEvent.emit(response);
+
+        this._snackBar.open('Image Removed Successfully', '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
+      })
+    }
+    else{
+      console.log("No Image to Remove")
+    }
+  }  
+
+  // openDialog(note:any){
+  //   const dialogRef = this.dialog.open(CollabComponent,{
+  //     width: '500px',
+  //     maxHeight: '400px',
+  //     data: note
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed:' + result);
+  //     // this.iconRefresh(result)
+  //   });
+  // }
 
 }

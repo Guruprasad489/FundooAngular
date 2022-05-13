@@ -1,7 +1,7 @@
 <div class="display-notes">
-  <mat-card class="note" *ngFor="let note of notesArray" [style.background]="note.color">
+  <mat-card class="note" *ngFor="let note of notesArray | filter : searchString" [style.background]="note.color">
 
-    <div class="note-title" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="note-title" fxLayout="row" fxLayoutAlign="space-between center" >
       <span class="mat-title" (click)="openDialog(note)">{{note.title}}</span>
       <button mat-icon-button matTooltip="Pin" (click)="pinUnPin(note);" *ngIf="!note.isPin"> 
         <img src="/assets/Note-icons/pin.svg" width="20px" height="20px">
@@ -11,8 +11,9 @@
       </button>
     </div>
 
-    <div class="description" fxLayout="row" fxLayoutAlign="start start" (click)="openDialog(note)">
+    <div class="description" fxLayout="column" fxLayoutAlign="start start" (click)="openDialog(note)">
       <span >{{note.description}}</span>
+      <img [src]="note.image" width="100%">
     </div>
 
     <mat-card-actions class="icons" fxLayout="row" fxLayoutAlign="space-between center">

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/Services/notesServices/notes.service';
 import { UpdateComponent } from '../update/update.component';
+import { DataService } from 'src/app/Services/DataService/data.service';
 
 
 @Component({
@@ -12,19 +13,25 @@ import { UpdateComponent } from '../update/update.component';
 })
 export class DisplayNoteComponent implements OnInit {
   iconMsg : any;
+  searchString:any;
 
   @Input() notesArray: any;
   //@Output() updateNoteEvent = new EventEmitter<any>();
   @Output() updatedIconData = new EventEmitter<any>();
-  constructor(public dialog: MatDialog, private notesService: NotesService, private _snackBar: MatSnackBar) { /*console.log(this.notesArray);*/ }
+  constructor(public dialog: MatDialog, private notesService: NotesService, private _snackBar: MatSnackBar, private dataService: DataService) { /*console.log(this.notesArray);*/ }
 
   ngOnInit(): void {
     // console.log(this.notesArray);
+    this.dataService.recievedData.subscribe((response: any) => {
+      console.log("Data recieved", response);
+      this.searchString = response
+    })
   }
 
   openDialog(note:any){
     const dialogRef = this.dialog.open(UpdateComponent,{
       width: '700px',
+      maxHeight: '600px',
       data: note
     });
 
@@ -38,7 +45,8 @@ export class DisplayNoteComponent implements OnInit {
     note.isPin = !note.isPin;
     // console.log(note.isPin)
     this.notesService.pinNote(note.noteId).subscribe((response: any) => {
-      console.log("Note Pin status changed", response.data);
+      console.log("Note Pin status changed", response);
+      this.updatedIconData.emit(response);
 
       if (response.data.isPin == true) {
         this._snackBar.open('Note Pinned', '', {
@@ -59,6 +67,8 @@ export class DisplayNoteComponent implements OnInit {
     this.iconMsg = $event;
     this.updatedIconData.emit(this.iconMsg);
   }
+
+
 
 }
 

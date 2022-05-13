@@ -1,3 +1,9 @@
 ::ng-deep mat-dialog-container {
     border-radius: 10px !important;
+    padding: 0px !important;
+    // overflow: hidden !important;
+  }
+
+  .note{
+    padding: 30px;
   }

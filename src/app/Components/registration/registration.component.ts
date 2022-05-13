@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/userServices/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
-// import { ConfirmedValidator } from './confirmed.validator';
+import { MustMatch } from '..';
 
 @Component({
   selector: 'app-registration',
@@ -22,15 +21,13 @@ export class RegistrationComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             firstName: ['', [Validators.required, Validators.pattern("^[A-Z]{1}[a-z]{2,}$")]],
             lastName: ['', [Validators.required, Validators.pattern("^[A-Z]{1}[a-z]{2,}$")]],
-            // userName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-zA-Z0-9]{3,}([._+-][a-zA-Z0-9]{1,})?@[a-zA-Z0-9]{1,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$")]],
             password: ['', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[&%$#@?^*!~]).{8,}$")]],
             confirmPassword: ['', Validators.required]
         },
-        // , {
-        //     validator: ConfirmedValidator('password', 'confirmPassword')
-        // }
-        );
+        {
+            validator: MustMatch('password', 'confirmPassword')
+        });
     }
         // convenience getter for easy access to form fields
         get f() { return this.registerForm.controls; }
@@ -70,17 +67,3 @@ export class RegistrationComponent implements OnInit {
         }
 }
 
-// export function ConfirmedValidator(controlName: string, matchingControlName: string){
-//     return (formGroup: FormGroup) => {
-//         const control = formGroup.controls[controlName];
-//         const matchingControl = formGroup.controls[matchingControlName];
-//         if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
-//             return;
-//         }
-//         if (control.value !== matchingControl.value) {
-//             matchingControl.setErrors({ confirmedValidator: true });
-//         } else {
-//             matchingControl.setErrors(null);
-//         }
-//     }
-// }

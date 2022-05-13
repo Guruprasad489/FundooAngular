@@ -46,13 +46,20 @@
                     <mat-label>Password</mat-label>
                     <input matInput matInput [type]="hide?'password':'text'" placeholder="Password" formControlName="password">
                     <mat-hint>Use 8 or more characters <!--with a mix of letters, numbers & symbols--></mat-hint>
-                    <mat-error>Password is required</mat-error>
+                    <mat-error>Password invalid</mat-error>
+                    <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Invalid Password</div>
+                    </div> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Confirm Password</mat-label>
                     <input matInput [type]="hide?'password':'text'" placeholder="Confirm Password" formControlName="confirmPassword">
                     <mat-error>Password does not match</mat-error>
-                    <!-- <mat-hint>Hint</mat-hint> -->
+                    <!-- <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div> -->
                 </mat-form-field>
             </div>
             <div class="form-group form-field">

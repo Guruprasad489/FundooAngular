@@ -1,4 +1,4 @@
-<div class="take-note" style="padding:10px" [style.background]="data.color">
+<div class="note" [style.background]="color">
 
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <input class="mat-title" matInput mat-dialog-title [(ngModel)]="title">
@@ -10,12 +10,13 @@
     </button>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <textarea type="text" matInput mat-dialog-content [(ngModel)]="description" style="min-height: 100px;"></textarea>
+  <div fxLayout="column" fxLayoutAlign="space-between center">
+    <textarea type="text" matInput mat-dialog-content [(ngModel)]="description" style="overflow: auto; resize: none !important; word-wrap: break-word; " cdkTextareaAutosize cdkAutosizeMinRows="0" cdkAutosizeMaxRows="25"></textarea>
+    <img [src]="image" width="100%">
   </div>
 
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
-    <app-icons [noteObj]="data"></app-icons>
+    <app-icons [noteObj]="data" (changeNoteEvent)="iconRefresh($event)"></app-icons>
     <button mat-button [mat-dialog-close]="true" matTooltip="Update" (click)="updateNote()">Close</button>
   </div>
 
