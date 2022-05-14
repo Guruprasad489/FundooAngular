@@ -3,8 +3,12 @@
     height:70px;
     border-bottom: 0.5px solid lightgray;
     box-shadow: 1px 1px 5px gray ;
-    
 }
+
+a.active-list-item {
+    background-color: #6472c0 !important;
+    border-radius: 0px 25px 25px 0px;
+  }
 
 .mat-form-field ::ng-deep .mat-form-field-wrapper{
     margin-bottom: 0px;

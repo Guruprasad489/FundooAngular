@@ -44,4 +44,14 @@ export class CollabService {
     }
     return this.httpService.deleteService(`Collaborator/Remove?collabID=${collabId}&noteID=${noteId}`, true, header);
   }
+
+  getCollabsList() {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.getService('Collaborator/GetCollabList', true, header);
+  }
 }

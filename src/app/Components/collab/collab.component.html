@@ -6,15 +6,15 @@
     <div class="rows" fxLayoutAlign="space-between start">
         <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"> </button>
         <div class="collab" fxLayout="column" fxLayoutAlign="start start">
-            <span><b>Guru Prasad</b><i>(Owner)</i></span>
-            <span>guruprasad.testmail@gmail.com</span>
+            <span><b>{{name}}</b><i>(Owner)</i></span>
+            <span>{{email}}</span>
         </div>
         <button mat-icon-button style="visibility:hidden;"><img src="/assets/Dashboard-icons/Cancel-Search.svg"></button>
     </div>
 
-    <div *ngFor="let c of collabObj" class="rows" fxLayoutAlign="space-between start">
+    <div *ngFor="let c of collabResponse" class="rows" fxLayoutAlign="space-between start">
         <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"> </button>
-        <div class="collab" fxLayout="column" fxLayoutAlign="start start">
+        <div class="collab" fxLayout="column" fxLayoutAlign="start start" >
             <span><b>{{c.emailId}} </b></span>
             <span>{{c.emailId}}</span>
         </div>
@@ -26,12 +26,12 @@
         <div class="collab" style="padding: 10px 0px;">
             <input matInput placeholder="Person or email to share with" [(ngModel)]="collabEmail">
         </div>
-        <button mat-icon-button (click)="addCollab()"><img src="/assets/Note-icons/done_black_24dp.svg"></button>
+        <button mat-icon-button (click)="addCollab()" [style]="collabEmail==''? 'opacity:0' : 'opacity: 1'"><img src="/assets/Note-icons/done_black_24dp.svg"></button>
     </div>
 
 </div>
 
 <div class="buttons">
-    <button mat-button matTooltip="Cancel" (click)="cancel()">Cancel</button>
-    <button mat-button matTooltip="Save" (click)="save()">Save</button>
+    <button mat-button matTooltip="Cancel" (click)="cancel(collabResponse)">Cancel</button>
+    <button mat-button matTooltip="Save" (click)="save(collabResponse)">Save</button>
 </div>

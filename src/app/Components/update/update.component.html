@@ -19,7 +19,7 @@
   </div>
 
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
-    <app-icons [noteObj]="data" [collabObj]="collabList" (changeNoteEvent)="iconRefresh($event)"></app-icons>
+    <app-icons [noteObj]="data" (changeNoteEvent)="iconRefresh($event)"></app-icons>
     <button mat-button [mat-dialog-close]="true" matTooltip="Update" (click)="updateNote()" *ngIf="!data.isTrash">Close</button>
   </div>
 

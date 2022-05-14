@@ -34,6 +34,15 @@ button:hover{
     background-color: rgb(247, 233, 217) ;
 }
 
+app-icons{
+    opacity: 0;
+}
+.note:hover{
+    app-icons{
+        opacity: 1;
+    }
+}
+
 @media (max-width: 726px) {
     .note{
         width: 350px;

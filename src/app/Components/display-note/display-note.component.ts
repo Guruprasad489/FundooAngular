@@ -16,13 +16,12 @@ export class DisplayNoteComponent implements OnInit {
   iconMsg : any;
   searchString:any;
   collabList:any;
-  note:any;
 
   @Input() notesArray: any;
   //@Output() updateNoteEvent = new EventEmitter<any>();
   @Output() updatedIconData = new EventEmitter<any>();
   constructor(public dialog: MatDialog, private notesService: NotesService, private _snackBar: MatSnackBar, private dataService: DataService,
-    private collabService: CollabService) { /*console.log(this.notesArray);*/ }
+    private collabService: CollabService) {  }
 
   ngOnInit(): void {
     this.dataService.recievedData.subscribe((response: any) => {
@@ -30,8 +29,7 @@ export class DisplayNoteComponent implements OnInit {
       this.searchString = response
     })
   
-    // this.getAllCollabs(this.note);
-  
+    this.getCollabsList();
   }
 
   openDialog(note:any){
@@ -41,8 +39,8 @@ export class DisplayNoteComponent implements OnInit {
       data: note
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed:' + result);
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log('The dialog was closed:', result);
       this.iconRefresh(result)
     });
   }
@@ -72,10 +70,11 @@ export class DisplayNoteComponent implements OnInit {
   iconRefresh($event:any){
     this.iconMsg = $event;
     this.updatedIconData.emit(this.iconMsg);
+    this.getCollabsList()
   }
 
-  getAllCollabs(note:any){
-    this.collabService.getAllCollabs(note).subscribe((response: any) => {
+  getCollabsList(){
+    this.collabService.getCollabsList().subscribe((response: any) => {
       this.collabList = response.data;
 
       console.log("Getall Collaborator Success", response);

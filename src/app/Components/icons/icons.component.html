@@ -1,6 +1,6 @@
 <div class="icons" fxFlex="noshrink">
     <button mat-icon-button matTooltip="Remind me" *ngIf="!isTrash"> <img src="/assets/Note-icons/add_alert.svg" width="20px" height="20px"></button>
-    <button mat-icon-button matTooltip="Collaborator" *ngIf="!isTrash" (click)="openDialog(noteObj, collabObj)"> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
+    <button mat-icon-button matTooltip="Collaborator" *ngIf="!isTrash" (click)="openDialog(noteObj)"> <img src="/assets/Note-icons/add_person.svg" width="20px" height="20px"></button>
     
     <button mat-icon-button matTooltip="Background color" [matMenuTriggerFor]="color" *ngIf="!isTrash"> <img src="/assets/Note-icons/color.svg" width="20px" height="20px"></button>
     <mat-menu #color="matMenu">

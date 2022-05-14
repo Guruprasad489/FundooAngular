@@ -13,15 +13,28 @@ export class DashBoardComponent implements OnInit {
   public sidenavText : boolean=true;
   search:any;
   c:boolean=false;
+  profileName:any;
+  profileEmail:any;
 
-  constructor(private router: Router, private _snackBar: MatSnackBar, private dataService: DataService) { }
+  constructor(private router: Router, private _snackBar: MatSnackBar, private dataService: DataService) { 
+    this.profileName = localStorage.getItem('name');
+    this.profileEmail = localStorage.getItem('email');
+  }
 
   ngOnInit(): void {
   }
 
+  reload(){
+    window.location.reload()
+  }
+
   signOut(){
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+
     this.router.navigateByUrl('/login');
+    // window.location.reload()
 
     this._snackBar.open('Sign out successful', '', {
       duration: 3000,

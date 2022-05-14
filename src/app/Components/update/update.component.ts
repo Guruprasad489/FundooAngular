@@ -70,9 +70,9 @@ export class UpdateComponent implements OnInit {
         isTrash: this.isTrash
       }
       this.notesService.updateNote(reqData, this.noteId).subscribe((response: any) => {
-        console.log("Note updated successfully", response);
+        console.log("Note updated successfully", response.data);
         this.updateNoteEvent.emit(response.data);
-        this.dialogRef.close(response);
+        this.dialogRef.close(response.data);
 
         this._snackBar.open('Note updated successfully', '', {
           duration: 3000,
@@ -90,12 +90,14 @@ export class UpdateComponent implements OnInit {
   }
 
   iconRefresh(event:any){
-      if(event.data != (null || undefined)){
+    this.getAllCollabs()
+      if(event.data !== (null || undefined)){
       this.color = event.data.color
       this.image = event.data.image
       if(event.data.isTrash==true || event.data.isArchive==true){
         this.dialogRef.close();
       }
+      
     }
     if(event.message == 'Image Removed Successfully'){
       this.image =null
