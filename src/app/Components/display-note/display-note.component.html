@@ -14,10 +14,13 @@
     <div class="description" fxLayout="column" fxLayoutAlign="start start" (click)="openDialog(note)">
       <span >{{note.description}}</span>
       <img [src]="note.image" width="100%">
+      <!-- <div *ngFor="let collab of collabList">
+      <button mat-icon-button matTooltip="collab.emailId"> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="24px" height="24px"> </button>
+      </div> -->
     </div>
 
     <mat-card-actions class="icons" fxLayout="row" fxLayoutAlign="space-between center">
-      <app-icons [noteObj]="note" (changeNoteEvent)="iconRefresh($event)"></app-icons>
+      <app-icons [noteObj]="note"  (changeNoteEvent)="iconRefresh($event)"></app-icons>
     </mat-card-actions>
 
   </mat-card>

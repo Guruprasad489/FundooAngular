@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CollabService } from 'src/app/Services/collabService/collab.service';
 import { NotesService } from 'src/app/Services/notesServices/notes.service';
 
 @Component({
@@ -21,10 +22,13 @@ export class UpdateComponent implements OnInit {
   isTrash: any
   noteId: any
 
+  collabList:any;
+
+
   @Output() updateNoteEvent = new EventEmitter<any>();
 
   constructor(public dialogRef: MatDialogRef<UpdateComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
-    private notesService: NotesService, private _snackBar: MatSnackBar) {
+    private notesService: NotesService, private _snackBar: MatSnackBar, private collabService: CollabService) {
     this.title = data.title
     this.description = data.description
     this.color = data.color
@@ -39,6 +43,8 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.data)
     // this.noteData = this.data;
+
+    this.getAllCollabs();
   }
 
   onNoClick(): void {
@@ -94,5 +100,16 @@ export class UpdateComponent implements OnInit {
     if(event.message == 'Image Removed Successfully'){
       this.image =null
     }
+  }
+
+  getAllCollabs(){
+    this.collabService.getAllCollabs(this.noteId).subscribe((response: any) => {
+      this.collabList = response.data;
+
+      console.log("Getall Collaborator Success", response);
+      
+      // this.changeNoteEvent.emit(response);
+      
+    })
   }
 }

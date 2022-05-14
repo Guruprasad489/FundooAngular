@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/Services/notesServices/notes.service';
 import { UpdateComponent } from '../update/update.component';
 import { DataService } from 'src/app/Services/DataService/data.service';
+import { CollabService } from 'src/app/Services/collabService/collab.service';
 
 
 @Component({
@@ -14,18 +15,23 @@ import { DataService } from 'src/app/Services/DataService/data.service';
 export class DisplayNoteComponent implements OnInit {
   iconMsg : any;
   searchString:any;
+  collabList:any;
+  note:any;
 
   @Input() notesArray: any;
   //@Output() updateNoteEvent = new EventEmitter<any>();
   @Output() updatedIconData = new EventEmitter<any>();
-  constructor(public dialog: MatDialog, private notesService: NotesService, private _snackBar: MatSnackBar, private dataService: DataService) { /*console.log(this.notesArray);*/ }
+  constructor(public dialog: MatDialog, private notesService: NotesService, private _snackBar: MatSnackBar, private dataService: DataService,
+    private collabService: CollabService) { /*console.log(this.notesArray);*/ }
 
   ngOnInit(): void {
-    // console.log(this.notesArray);
     this.dataService.recievedData.subscribe((response: any) => {
       console.log("Data recieved", response);
       this.searchString = response
     })
+  
+    // this.getAllCollabs(this.note);
+  
   }
 
   openDialog(note:any){
@@ -68,7 +74,16 @@ export class DisplayNoteComponent implements OnInit {
     this.updatedIconData.emit(this.iconMsg);
   }
 
+  getAllCollabs(note:any){
+    this.collabService.getAllCollabs(note).subscribe((response: any) => {
+      this.collabList = response.data;
 
+      console.log("Getall Collaborator Success", response);
+      
+      // this.changeNoteEvent.emit(response);
+      
+    })
+  }
 
 }
 

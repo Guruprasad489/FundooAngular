@@ -11,13 +11,16 @@
   </div>
 
   <div fxLayout="column" fxLayoutAlign="space-between center">
-    <textarea type="text" matInput mat-dialog-content [(ngModel)]="description" style="overflow: auto; resize: none !important; word-wrap: break-word; " cdkTextareaAutosize cdkAutosizeMinRows="0" cdkAutosizeMaxRows="25"></textarea>
+    <textarea type="text" matInput mat-dialog-content [(ngModel)]="description" style="overflow: hidden; resize: none !important; word-wrap: break-word; " cdkTextareaAutosize cdkAutosizeMinRows="0" cdkAutosizeMaxRows="25"></textarea>
     <img [src]="image" width="100%">
+  </div>
+  <div  fxLayout="row">
+    <button mat-icon-button *ngFor="let collab of collabList" [matTooltip]="collab.emailId"> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="24px" height="24px"> </button>
   </div>
 
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
-    <app-icons [noteObj]="data" (changeNoteEvent)="iconRefresh($event)"></app-icons>
-    <button mat-button [mat-dialog-close]="true" matTooltip="Update" (click)="updateNote()">Close</button>
+    <app-icons [noteObj]="data" [collabObj]="collabList" (changeNoteEvent)="iconRefresh($event)"></app-icons>
+    <button mat-button [mat-dialog-close]="true" matTooltip="Update" (click)="updateNote()" *ngIf="!data.isTrash">Close</button>
   </div>
 
 </div>

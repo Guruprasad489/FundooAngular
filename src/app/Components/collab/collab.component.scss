@@ -1,0 +1,28 @@
+::ng-deep mat-dialog-container {
+    border-radius: 10px !important;
+    padding: 0px !important;
+    // overflow: hidden !important;
+  }
+  .collabs{
+    padding: 20px;
+  }
+
+  .collab{
+    width: 80%;
+    margin-left: 5px;
+  }
+ 
+  .rows{
+    margin: 10px;
+  }
+
+  .buttons{
+    display:flex;
+    justify-content: flex-end;
+    background-color: rgba(0,0,0,.07);
+    padding: 10px;
+  }
+
+  .buttons button{
+    margin: 0px 10px 0px 10px;
+  }

@@ -24,6 +24,7 @@ export class IconsComponent implements OnInit {
   //colorsArr = ["white","#f28b82","#fbbc04","#fff475","#ccff90","#a7ffeb","#cbf0f8","#aecbfa","#d7aefb","#fdcfe8","#e6c9a8","#e8eaed"];
 
   @Input() noteObj: any;
+  @Input() collabObj: any;
   @Output() changeNoteEvent = new EventEmitter<any>();
 
   constructor(private notesService: NotesService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
@@ -137,17 +138,19 @@ export class IconsComponent implements OnInit {
     }
   }  
 
-  // openDialog(note:any){
-  //   const dialogRef = this.dialog.open(CollabComponent,{
-  //     width: '500px',
-  //     maxHeight: '400px',
-  //     data: note
-  //   });
+  openDialog(noteObj:any, collabObj:any){
+    const dialogRef = this.dialog.open(CollabComponent,{
+      width: '600px',
+      maxHeight: '400px',
+      data: {note: noteObj, collab:collabObj}
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed:' + result);
-  //     // this.iconRefresh(result)
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:' + result);
+      // this.iconRefresh(result)
+    });
+  }
+
+  
 
 }

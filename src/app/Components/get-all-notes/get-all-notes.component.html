@@ -3,14 +3,15 @@
     
     <div>
     <!-- <div fxLayout="column"> -->
-    <!-- <span  *ngIf="noteList.length>0" >Pinned</span> -->
+    <span  *ngIf="noteList.length>0" style="margin-left:15px"><b>Pinned</b></span>
     <div class="display" fxLayout="row" >
         <app-display-note [notesArray]="noteList" (updateNoteEvent)="updatedData($event)" (updatedIconData)="updatedIcon($event)"></app-display-note>
     </div>
     <!-- </div> -->
 
+    <br>
     <!-- <div fxLayout="column"> -->
-    <!-- <span  *ngIf="noteListUnpinned.length>0">Others</span> -->
+    <span  *ngIf="noteListUnpinned.length>0" style="margin-left:15px"><b>Others</b></span>
     <div class="display" fxLayout="row" >
         <app-display-note [notesArray]="noteListUnpinned" (updateNoteEvent)="updatedData($event)" (updatedIconData)="updatedIcon($event)"></app-display-note>
     </div>

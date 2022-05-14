@@ -13,7 +13,7 @@ export class FilterPipe implements PipeTransform {
 
     const searchResult = [];
     for(const note of value){
-      if(note['title'].toLowerCase().includes(searchString.toLowerCase()) || note['description'].toLowerCase().includes(searchString.toLowerCase())){
+      if(note.title.toLowerCase().includes(searchString.toLowerCase()) || note.description.toLowerCase().includes(searchString.toLowerCase())){
         searchResult.push(note);
       }
     }

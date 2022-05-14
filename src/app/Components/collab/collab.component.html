@@ -1,23 +1,37 @@
-<div class="note" >
+<div class="collabs">
 
-    <!-- <div fxLayout="row" fxLayoutAlign="space-between center">
-      <input class="mat-title" matInput mat-dialog-title [(ngModel)]="title">
-      <button mat-icon-button matTooltip="Pin" (click)="pinUnPin();" *ngIf="!isPin">
-        <img src="/assets/Note-icons/pin.svg" width="20px" height="20px">
-      </button>
-      <button mat-icon-button matTooltip="Unpin" (click)="pinUnPin();" *ngIf="isPin">
-        <img src="/assets/Note-icons/pinned.svg" width="20px" height="20px">
-      </button>
+    <span class="mat-title">Collaborators</span>
+    <hr />
+
+    <div class="rows" fxLayoutAlign="space-between start">
+        <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"> </button>
+        <div class="collab" fxLayout="column" fxLayoutAlign="start start">
+            <span><b>Guru Prasad</b><i>(Owner)</i></span>
+            <span>guruprasad.testmail@gmail.com</span>
+        </div>
+        <button mat-icon-button style="visibility:hidden;"><img src="/assets/Dashboard-icons/Cancel-Search.svg"></button>
     </div>
-  
-    <div fxLayout="column" fxLayoutAlign="space-between center">
-      <textarea type="text" matInput mat-dialog-content [(ngModel)]="description" style="overflow: auto; resize: none !important; word-wrap: break-word; " cdkTextareaAutosize cdkAutosizeMinRows="0" cdkAutosizeMaxRows="25"></textarea>
-      <img [src]="image" width="100%">
+
+    <div *ngFor="let c of collabObj" class="rows" fxLayoutAlign="space-between start">
+        <button mat-icon-button> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"> </button>
+        <div class="collab" fxLayout="column" fxLayoutAlign="start start">
+            <span><b>{{c.emailId}} </b></span>
+            <span>{{c.emailId}}</span>
+        </div>
+        <button mat-icon-button (click)="removeCollab(c.collaboratorId)"><img src="/assets/Dashboard-icons/Cancel-Search.svg"></button>
     </div>
-  
-    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
-      <app-icons [noteObj]="data" (changeNoteEvent)="iconRefresh($event)"></app-icons>
-      <button mat-button [mat-dialog-close]="true" matTooltip="Update" (click)="updateNote()">Close</button>
-    </div> -->
-  
-  </div>
+
+    <div class="rows" fxLayoutAlign="space-between start" >
+        <button mat-icon-button style="border: 1px solid gray;"> <img src="/assets/Note-icons/add_person.svg" width="24px" height="36px"> </button>
+        <div class="collab" style="padding: 10px 0px;">
+            <input matInput placeholder="Person or email to share with" [(ngModel)]="collabEmail">
+        </div>
+        <button mat-icon-button (click)="addCollab()"><img src="/assets/Note-icons/done_black_24dp.svg"></button>
+    </div>
+
+</div>
+
+<div class="buttons">
+    <button mat-button matTooltip="Cancel" (click)="cancel()">Cancel</button>
+    <button mat-button matTooltip="Save" (click)="save()">Save</button>
+</div>
