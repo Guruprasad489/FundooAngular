@@ -11,7 +11,7 @@ import { DataService } from 'src/app/Services/DataService/data.service';
 })
 export class DashBoardComponent implements OnInit {
   public sidenavText : boolean=true;
-  search:any;
+  search:any='';
   c:boolean=false;
   profileName:any;
   profileEmail:any;

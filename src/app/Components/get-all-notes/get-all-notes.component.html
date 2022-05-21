@@ -1,6 +1,8 @@
 <div class="notelist" fxLayout="column" fxLayoutAlign="center center" >
     <app-take-note (createNoteEvent)="refresh($event)" (updateNoteEvent)="updatedData($event)"></app-take-note>
-    
+</div>
+
+<div class="notelist">
     <div>
     <!-- <div fxLayout="column"> -->
     <span  *ngIf="noteList.length>0" style="margin-left:15px"><b>Pinned</b></span>

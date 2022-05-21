@@ -30,6 +30,8 @@
                 <button mat-icon-button fxHide fxShow.gt-xs> <img src="/assets/Dashboard-icons/circled-menu.png" width="24px" height="24px"> </button>
                 <button mat-icon-button [matTooltip]="profileName+'\n'+profileEmail"> <img src="/assets/Dashboard-icons/Circle-icons-profile.svg" width="33px" height="33px"  [matMenuTriggerFor]="profile"> </button>
                 <mat-menu #profile="matMenu">
+                    <span class="profile"><b>{{profileName}}</b></span>
+                    <span class="profile">{{profileEmail}}</span><hr>
                     <button mat-menu-item (click)="signOut()">Sign out</button>
                 </mat-menu>
             </mat-nav-list>
