@@ -7,10 +7,7 @@ import { HttpService } from '../httpServices/http.service';
 })
 export class CollabService {
 
-  token: any;
-
   constructor(private httpService: HttpService) {
-    this.token = localStorage.getItem('token');
   }
 
   addCollab(id:any, reqData: any) {
@@ -18,7 +15,7 @@ export class CollabService {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     }
     return this.httpService.postService('Collaborator/Add?noteID='+id, {EmailId:reqData}, true, header);
@@ -28,7 +25,7 @@ export class CollabService {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     }
     return this.httpService.getService('Collaborator/GetAll?noteID='+noteId, true, header);
@@ -39,7 +36,7 @@ export class CollabService {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     }
     return this.httpService.deleteService(`Collaborator/Remove?collabID=${collabId}&noteID=${noteId}`, true, header);
@@ -49,7 +46,7 @@ export class CollabService {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     }
     return this.httpService.getService('Collaborator/GetCollabList', true, header);

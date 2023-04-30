@@ -17,6 +17,14 @@ export class GetAllNotesComponent implements OnInit {
   }
 
   getAllNotes(){
+    this.noteList = this.notesService.TestNotes;
+    this.noteList = this.noteList.filter((object:any)=>{
+      return object.isArchive===false && object.isTrash===false && object.isPin===true
+    })
+    this.noteListUnpinned = this.notesService.TestNotes;
+    this.noteListUnpinned = this.noteListUnpinned.filter((object:any)=>{
+      return object.isArchive===false && object.isTrash===false && object.isPin===false
+    })
     this.notesService.getAllNotes().subscribe((response:any)=>{
       console.log("GetAll Notes successful", response.data);
       this.noteList = response.data;
